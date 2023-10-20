@@ -89,15 +89,6 @@
                             </div>
                         </div>
 
-
-                        @if(config('settings.reCaptchStatus'))
-                            <div class="form-group">
-                                <div class="col-sm-6 col-sm-offset-4">
-                                    <div class="g-recaptcha" data-sitekey="{{ config('settings.reCaptchSite') }}"></div>
-                                </div>
-                            </div>
-                        @endif
-
                         <div class="form-group row mb-4">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -105,26 +96,10 @@
                                 </button>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                                <p class="text-center mb-4">
-                                    Or Use Social Logins to Register
-                                </p>
-                                @include('partials.socials')
-                            </div>
-                        </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
-
-@section('footer_scripts')
-    @if(config('settings.reCaptchStatus'))
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-    @endif
 @endsection
