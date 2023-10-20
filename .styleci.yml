@@ -11,4 +11,3 @@ finder:
     - index.php
     - server.php
     - CheckIsUserActivated.php
-    - SocialController.php
