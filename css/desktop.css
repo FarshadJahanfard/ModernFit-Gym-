@@ -75,14 +75,14 @@ header {
 
 .action-button {
     position: absolute;
-    top: 50%; /* Adjust as needed to position the button vertically */
-    left: 50%; /* Adjust as needed to position the button horizontally */
+    top: 50%; 
+    left: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px 20px; /* Adjust as needed */
-    background-color: #34E951; /* Set the background color of the button */
-    color: #000000; /* Set the text color */
+    padding: 10px 20px; 
+    background-color: #34E951; 
+    color: #000000; 
     text-decoration: none;
-    border-radius: 5px; /* Add rounded corners if desired */
+    border-radius: 5px; 
     width: 140px;
     text-align: center;
     text-transform: uppercase;
@@ -97,4 +97,21 @@ header {
 
 .action-button:hover {
     background-color: #00c020;
+}
+
+.main-h1 {
+    color: #fff;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-35%, -80%);
+    padding: 10px 20px;
+    width: 80%;
+    font-family: Saira Condensed;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: inherit;
 }
