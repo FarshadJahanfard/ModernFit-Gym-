@@ -102,7 +102,7 @@ header {
 
 .main-h1 {
     color: #fff;
-    position: fixed;
+    position: absolute;
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -121,9 +121,11 @@ header {
 /*INDEX PAGE MAIN CONTENT*/
 
 .main-content{
-    height: 300px;
+    height: 301px;
     width: auto;
     background: rgb(26,209,123);
-    background: linear-gradient(41deg, rgba(26,209,123,1) 11%, rgba(63,63,79,1) 47%, rgba(26,28,28,1) 100%);
-    position: relative;
+    background: linear-gradient(41deg, rgba(26,209,123,1) 11%, rgba(63,63,79,1) 47%, rgba(26,28,28,1) 100%); 
+    width: 100%; 
+    position: absolute;
+    bottom: 0;
 }
