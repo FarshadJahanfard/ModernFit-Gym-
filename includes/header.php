@@ -11,8 +11,7 @@
     <img src="./Images/Row.jpg" alt="" class="background-image">
     <h1 class="main-h1">join us today!</h1>
     <a href="#" class="action-button">join now</a>
-    <div class="content">
-        
+
         <nav>
             <ul class="nav-list">
                 <li><a href="../classes.php">Classes</a></li>
@@ -21,7 +20,6 @@
                 <li><a href="#">Text</a></li>
             </ul>
         </nav>
-    </div>
 </div>
 
 

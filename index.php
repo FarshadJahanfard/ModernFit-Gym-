@@ -14,6 +14,15 @@
   include("./includes/header.php");
   ?>
 
-</body>
 
+<div class="main-content">
+    
+</div>
+
+
+
+
+
+
+</body>
 </html>
