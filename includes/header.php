@@ -5,10 +5,12 @@
 
 
 <div class="header-container">
-    <img src="./Images/Logo2.png" alt="the website logo" class="logo">
+    <a href="index.php">
+      <img src="./Images/Logo2.png" alt="the website logo" class="logo">
+    </a>
     <img src="./Images/Row.jpg" alt="" class="background-image">
     <h1 class="main-h1">join us today!</h1>
-   <button><a href="#" class="action-button">join now</a></button> 
+    <a href="#" class="action-button">join now</a>
     <div class="content">
         
         <nav>

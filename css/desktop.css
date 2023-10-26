@@ -24,19 +24,20 @@ header {
     z-index: 1;
     position: absolute;
     top: 0;
-    left: 0;
     height: 134px;
     width: 127px;
     left: 40px;
+    cursor: pointer;
 }
 .logo img {
     width: 127px;
     height: 134px;
     flex-shrink: 0;
-   
 }
+
 .background-image{
     height: 500px;
+    width: 100%;
 }
 
 .nav-list {
@@ -57,7 +58,7 @@ header {
     text-decoration: none;
     color: #fff;
     font-size: 20px;
-    font-family: Saira Condensed;
+    font-family: 'Saira Condensed', sans-serif;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -86,7 +87,7 @@ header {
     width: 140px;
     text-align: center;
     text-transform: uppercase;
-    font-family: Saira Condensed; 
+    font-family: 'Saira Condensed', sans-serif;
     transition: background-color 0.3s;  
     font-size: 26px;
     font-style: normal;
