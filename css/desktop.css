@@ -145,8 +145,8 @@ header {
   
 
   .slideshow-container img {
-    width: 100%; /* Make all images fill the container */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; 
+    height: auto; 
 }
 
 
@@ -176,10 +176,6 @@ header {
   .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
   }
-  
-
-  
- 
   
   /* The dots/bullets/indicators */
   .dot {
