@@ -15,7 +15,7 @@
         
         <nav>
             <ul class="nav-list">
-                <li><a href="Classes.php">Classes</a></li>
+                <li><a href="../classes.php">Classes</a></li>
                 <li><a href="Findyourgym.php">Find your gym</a></li>
                 <li><a href="#">Text</a></li>
                 <li><a href="#">Text</a></li>
