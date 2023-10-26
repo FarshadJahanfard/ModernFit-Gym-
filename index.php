@@ -13,9 +13,9 @@
   <?php
   include("includes/header.php");
   ?>
-  <main>
-    Main
-  </main>
+  <div class="main-banner">
+    <!--<img src="./Images/Row.jpg" alt="">-->    
+  </div>
 </body>
 
 </html>
