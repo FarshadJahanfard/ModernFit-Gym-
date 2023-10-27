@@ -6,7 +6,6 @@ use App\Http\Requests\DeleteUserAccount;
 use App\Http\Requests\UpdateUserPasswordRequest;
 use App\Http\Requests\UpdateUserProfile;
 use App\Models\Profile;
-use App\Models\Theme;
 use App\Models\User;
 use App\Notifications\SendGoodbyeEmail;
 use App\Traits\CaptureIpTrait;
@@ -61,11 +60,8 @@ class ProfilesController extends Controller
             abort(404);
         }
 
-        $currentTheme = Theme::find($user->profile->theme_id);
-
         $data = [
             'user'         => $user,
-            'currentTheme' => $currentTheme,
         ];
 
         return view('profiles.show')->with($data);
@@ -86,18 +82,8 @@ class ProfilesController extends Controller
                 ->with('error', trans('profile.notYourProfile'))
                 ->with('error_title', trans('profile.notYourProfileTitle'));
         }
-
-        $themes = Theme::where('status', 1)
-                        ->orderBy('name', 'asc')
-                        ->get();
-
-        $currentTheme = Theme::find($user->profile->theme_id);
-
         $data = [
             'user'         => $user,
-            'themes'       => $themes,
-            'currentTheme' => $currentTheme,
-
         ];
 
         return view('profiles.edit')->with($data);
@@ -116,7 +102,7 @@ class ProfilesController extends Controller
     {
         $user = $this->getUserByUsername($username);
 
-        $input = $request->only('theme_id', 'location', 'bio', 'avatar_status');
+        $input = $request->only('location', 'bio', 'avatar_status');
 
         $ipAddress = new CaptureIpTrait();
 

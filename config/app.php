@@ -1,6 +1,5 @@
 <?php
 
-use App\Providers\ComposerServiceProvider;
 use App\Providers\MacroServiceProvider;
 use Collective\Html\FormFacade;
 use Collective\Html\HtmlFacade;
@@ -204,7 +203,6 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        ComposerServiceProvider::class,
         MacroServiceProvider::class,
     ],
 
