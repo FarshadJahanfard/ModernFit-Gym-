@@ -31,8 +31,6 @@ class Profile extends Model
         'theme_id',
         'location',
         'bio',
-        'twitter_username',
-        'github_username',
         'user_profile_bg',
         'avatar',
         'avatar_status',

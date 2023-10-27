@@ -116,7 +116,7 @@ class ProfilesController extends Controller
     {
         $user = $this->getUserByUsername($username);
 
-        $input = $request->only('theme_id', 'location', 'bio', 'twitter_username', 'github_username', 'avatar_status');
+        $input = $request->only('theme_id', 'location', 'bio', 'avatar_status');
 
         $ipAddress = new CaptureIpTrait();
 

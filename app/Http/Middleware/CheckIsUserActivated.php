@@ -31,8 +31,6 @@ class CheckIsUserActivated
                 'exceeded',
                 'authenticated.activate',
                 'authenticated.activation-resend',
-                'social/redirect/{provider}',
-                'social/handle/{provider}',
                 'logout',
                 'welcome',
             ];
