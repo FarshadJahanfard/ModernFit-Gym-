@@ -49,10 +49,6 @@
                                 {!! trans('titles.activeUsers') !!}
                             </a>
                             --}}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
-                                {!! trans('titles.laravelBlocker') !!}
-                            </a>
                         </div>
                     </li>
                 @endrole

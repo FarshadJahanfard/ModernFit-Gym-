@@ -18,7 +18,7 @@ return [
     'rolesEnabled'                  => true,
 
     // Optional Roles Middleware
-    'rolesMiddlware'                => ['activated', 'role:admin', 'activity', 'twostep'],
+    'rolesMiddlware'                => ['activated', 'role:admin', 'activity'],
 
     // Switch Between bootstrap 3 `panel` and bootstrap 4 `card` classes
     'bootstapVersion'               => '4',

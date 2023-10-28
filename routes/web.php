@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Homepage Route
-Route::group(['middleware' => ['web', 'checkblocked']], function () {
+Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'App\Http\Controllers\WelcomeController@welcome')->name('welcome');
     Route::get('/terms', 'App\Http\Controllers\TermsController@terms')->name('terms');
 });
@@ -26,7 +26,7 @@ Route::group(['middleware' => ['web', 'checkblocked']], function () {
 Auth::routes();
 
 // Public Routes
-Route::group(['middleware' => ['web', 'activity', 'checkblocked']], function () {
+Route::group(['middleware' => ['web', 'activity']], function () {
     // Activation Routes
     Route::get('/activate', ['as' => 'activate', 'uses' => 'App\Http\Controllers\Auth\ActivateController@initial']);
 
@@ -43,14 +43,14 @@ Route::group(['middleware' => ['web', 'activity', 'checkblocked']], function () 
 });
 
 // Registered and Activated User Routes
-Route::group(['middleware' => ['auth', 'activated', 'activity', 'checkblocked']], function () {
+Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
     // Activation Routes
     Route::get('/activation-required', ['uses' => 'App\Http\Controllers\Auth\ActivateController@activationRequired'])->name('activation-required');
     // Route::get('/logout', ['uses' => 'App\Http\Controllers\Auth\LoginController@logout'])->name('logout');
 });
 
 // Registered and Activated User Routes
-Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
     //  Homepage Route - Redirect based on user role is in controller.
     Route::get('/home', [
         'as'   => 'public.home',
@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
 });
 
 // Registered, activated, and is current user routes.
-Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']], function () {
     // User Profile and Account Routes
     Route::resource(
         'profile',
@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
 });
 
 // Registered, activated, and is admin routes.
-Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () {
     Route::resource('/users/deleted', \App\Http\Controllers\SoftDeletesController::class, [
         'only' => [
             'index', 'show', 'update', 'destroy',
@@ -125,5 +125,29 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');
     // Route::get('active-users', 'App\Http\Controllers\AdminDetailsController@activeUsers');
 });
+
+// Registered, activated, and is trainer routes.
+//Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function () {
+//    Route::resource('/users/deleted', \App\Http\Controllers\SoftDeletesController::class, [
+//        'only' => [
+//            'index', 'show', 'update', 'destroy',
+//        ],
+//    ]);
+//
+//    Route::resource('users', \App\Http\Controllers\UsersManagementController::class, [
+//        'names' => [
+//            'index'   => 'users',
+//            'destroy' => 'user.destroy',
+//        ],
+//        'except' => [
+//            'deleted',
+//        ],
+//    ]);
+//    Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
+//
+//    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+//    Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');
+//    // Route::get('active-users', 'App\Http\Controllers\AdminDetailsController@activeUsers');
+//});
 
 Route::redirect('/php', '/phpinfo', 301);
