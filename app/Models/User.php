@@ -124,6 +124,25 @@ class User extends Authenticatable
         return $this->belongsTo(Branch::class);
     }
 
+    public function memberships()
+    {
+        return $this->belongsToMany(Membership::class)
+            ->withPivot('start_date', 'end_date');
+    }
+
+    public function activeMembership()
+    {
+        $currentDate = now()->toDateString(); // Get the current date
+
+        // Use the pivot table to filter for active memberships
+        $activeMembership = $this->memberships()->first(function ($membership) use ($currentDate) {
+            return $currentDate >= $membership->pivot->start_date &&
+                $currentDate <= $membership->pivot->end_date;
+        });
+
+        return $activeMembership;
+    }
+
     /**
      * Check if a user has a profile.
      *
