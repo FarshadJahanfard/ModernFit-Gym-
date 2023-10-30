@@ -72,8 +72,11 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}" href="{{ url('/profile/'.Auth::user()->name) }}">
+                            <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name) ? 'active' : null }}" href="{{ url('/profile/'.Auth::user()->name) }}">
                                 {!! trans('titles.profile') !!}
+                            </a>
+                            <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/edit') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/edit') }}">
+                                Settings
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
