@@ -124,11 +124,19 @@ class User extends Authenticatable
         return $this->belongsTo(Branch::class);
     }
 
+    /**
+     * All memberships of the user.
+     */
+
     public function memberships()
     {
         return $this->belongsToMany(Membership::class)
             ->withPivot('start_date', 'end_date');
     }
+
+    /**
+     * Active user's membership if exists.
+     */
 
     public function activeMembership()
     {

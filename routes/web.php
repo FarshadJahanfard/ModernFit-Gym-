@@ -124,6 +124,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () 
             'destroy' => 'branch.destroy',
         ],
     ]);
+    Route::get('branches/{id}', 'BranchController@show')->name('branches.show');
 
     Route::resource('memberships', \App\Http\Controllers\MembershipController::class, [
         'names' => [

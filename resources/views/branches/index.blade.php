@@ -26,6 +26,7 @@
                     <td>{{ $branch->location }}</td>
                     <td>
                         <a href="{{ '/branches/' . $branch->id . "/edit" }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ '/branches/' . $branch->id }}" class="btn btn-success">Show</a>
                         <form action="{{ 'branches/' . $branch->id . "destroy/" }}" method="POST" style="display:inline">
                             @csrf
                             @method('DELETE')

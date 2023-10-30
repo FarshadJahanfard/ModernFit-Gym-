@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -41,6 +42,14 @@ class BranchController extends Controller
         ]);
 
         return redirect()->route('branches')->with('success', 'Branch created successfully');
+    }
+
+    public function show($id)
+    {
+        $branch = Branch::findOrFail($id);
+        $users = User::where('branch_id', $branch->id)->paginate(10); // Assuming branch_id is the foreign key in the User model
+
+        return view('branches.show', compact('branch', 'users'));
     }
 
     public function edit($id)
