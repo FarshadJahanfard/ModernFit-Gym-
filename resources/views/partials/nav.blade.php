@@ -24,6 +24,10 @@
                                 {!! trans('titles.adminUserList') !!}
                             </a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('branches') ? 'active' : null }}" href="{{ url('/branches') }}">
+                                Branches Administration
+                            </a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('users/create') ? 'active' : null }}" href="{{ url('/users/create') }}">
                                 {!! trans('titles.adminNewUser') !!}
                             </a>

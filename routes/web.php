@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BranchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -121,33 +122,17 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () 
     ]);
     Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
 
+    Route::resource('branches', BranchController::class, [
+        'names' => [
+            'index' => 'branches',
+            'edit' => 'branches.edit',
+            'destroy' => 'branch.destroy',
+        ],
+    ]);
+
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');
     // Route::get('active-users', 'App\Http\Controllers\AdminDetailsController@activeUsers');
 });
-
-// Registered, activated, and is trainer routes.
-//Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function () {
-//    Route::resource('/users/deleted', \App\Http\Controllers\SoftDeletesController::class, [
-//        'only' => [
-//            'index', 'show', 'update', 'destroy',
-//        ],
-//    ]);
-//
-//    Route::resource('users', \App\Http\Controllers\UsersManagementController::class, [
-//        'names' => [
-//            'index'   => 'users',
-//            'destroy' => 'user.destroy',
-//        ],
-//        'except' => [
-//            'deleted',
-//        ],
-//    ]);
-//    Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
-//
-//    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-//    Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');
-//    // Route::get('active-users', 'App\Http\Controllers\AdminDetailsController@activeUsers');
-//});
 
 Route::redirect('/php', '/phpinfo', 301);
