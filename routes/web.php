@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\BranchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,10 +33,6 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     Route::get('/activate/{token}', ['as' => 'authenticated.activate', 'uses' => 'App\Http\Controllers\Auth\ActivateController@activate']);
     Route::get('/activation', ['as' => 'authenticated.activation-resend', 'uses' => 'App\Http\Controllers\Auth\ActivateController@resend']);
     Route::get('/exceeded', ['as' => 'exceeded', 'uses' => 'App\Http\Controllers\Auth\ActivateController@exceeded']);
-
-    // Socialite Register Routes
-//    Route::get('/social/redirect/{provider}', ['as' => 'social.redirect', 'uses' => 'App\Http\Controllers\Auth\SocialController@getSocialRedirect']);
-//    Route::get('/social/handle/{provider}', ['as' => 'social.handle', 'uses' => 'App\Http\Controllers\Auth\SocialController@getSocialHandle']);
 
     // Route to for user to reactivate their user deleted account.
     Route::get('/re-activate/{token}', ['as' => 'user.reactivate', 'uses' => 'App\Http\Controllers\RestoreUserController@userReActivate']);
@@ -122,7 +117,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () 
     ]);
     Route::post('search-users', 'App\Http\Controllers\UsersManagementController@search')->name('search-users');
 
-    Route::resource('branches', BranchController::class, [
+    Route::resource('branches', \App\Http\Controllers\BranchController::class, [
         'names' => [
             'index' => 'branches',
             'edit' => 'branches.edit',
@@ -130,9 +125,16 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () 
         ],
     ]);
 
+    Route::resource('memberships', \App\Http\Controllers\MembershipController::class, [
+        'names' => [
+            'index' => 'memberships',
+            'edit' => 'memberships.edit',
+            'destroy' => 'memberships.destroy',
+        ],
+    ]);
+
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');
-    // Route::get('active-users', 'App\Http\Controllers\AdminDetailsController@activeUsers');
 });
 
 Route::redirect('/php', '/phpinfo', 301);

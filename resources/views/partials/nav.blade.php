@@ -28,6 +28,10 @@
                                 Branches Administration
                             </a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('memberships') ? 'active' : null }}" href="{{ url('/memberships') }}">
+                                Memberships
+                            </a>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('users/create') ? 'active' : null }}" href="{{ url('/users/create') }}">
                                 {!! trans('titles.adminNewUser') !!}
                             </a>
