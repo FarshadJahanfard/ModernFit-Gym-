@@ -117,6 +117,14 @@ class User extends Authenticatable
     }
 
     /**
+     * The branch that user belongs to.
+     */
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    /**
      * Check if a user has a profile.
      *
      * @param  string  $name
