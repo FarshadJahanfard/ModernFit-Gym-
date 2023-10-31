@@ -97,6 +97,9 @@ header {
 
 .action-button:hover {
     background-color: #00c020;
+    color: #fff;
+    cursor: pointer;
+    
 }
 
 .main-h1 {
@@ -154,6 +157,7 @@ header {
 @media only screen and (max-width: 640px){
     .flex-item{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center; 
         max-width: 100%; 
@@ -176,6 +180,7 @@ header {
         max-width: 100%;
         height: auto;
         object-fit: cover;
+        flex-direction: column;
     }
     .image-grid{
     display: flex;
@@ -210,9 +215,11 @@ header {
    position: relative;
 }
 
+
 .view-class-btn:hover {
     background-color: #00c020;
     cursor: pointer;
+    color: #fff;
 }
 
 
@@ -220,6 +227,7 @@ header {
 .split {
     display: flex;
     width: 100%;
+    
 }
 
 .split-left {
@@ -237,14 +245,20 @@ header {
 
 .split-right {
     flex: 1;
-    background-color: red;
+    background-color:#fff;
     height: 80vh;
+    flex: 1;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding-bottom: 20px;   
 }
 
 .join-now{
     color:#fff;
-   
-
 }
 
 @media (max-width: 1020px) {
@@ -260,8 +274,9 @@ header {
 /* join now h1 */
 .join-now {
     margin-bottom: auto; 
-    margin-top:40%;
+    margin-top:30%;
     text-transform: uppercase;
+    padding: 30px;
 }
 
 
@@ -284,6 +299,103 @@ header {
 .join-btn:hover {
     background-color: #00c020;
     cursor: pointer;
+    color: #fff;
+}
+
+@media only screen and (max-width: 640px){
+    .join-btn{
+        top:0;
+        margin-bottom: 40px;
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    .join-btn{
+        margin-bottom: 40px;
+        top: 0px;
+    
+    }
+    .split-left{
+        height: auto;
+        position: relative;
+    }
+
+    .join-now{
+        margin: 5 auto;
+        height: 200px;
+        padding: 20px;
+    }
+}
+
+/* h2 above index form */
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container h2 {
+    font-size: 1.2em;
+    margin-bottom: 25px;
 }
 
 
+/* INDEX CONTACT FORM STYLING */
+
+
+.my-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* form submit button */
+button[type="submit"] {
+    background-color:#34E951;
+    color: #000000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #28a745;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+
+.form-group:not(:last-child) {
+    margin-bottom: 15px;
+}

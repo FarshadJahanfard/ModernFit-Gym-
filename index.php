@@ -31,7 +31,25 @@
 
   </div>
   <div class="split-right">
-  <h2>text</h2>
+  <div class="form-container">
+  <h2>SIGN UP FOR SPECIAL OFFERS
+            TO RECEIVE ALL THE LATEST OFFERS AND PROMOTIONS FOR YOUR NEAREST
+            BRANCH OF JD GYMS, PLEASE ADD YOUR DETAILS BELOW:</h2></div>
+  <form class="my-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
   </div>
 </div>
 
