@@ -119,10 +119,8 @@ header {
 
 /*INDEX PAGE MAIN CONTENT*/
 
-.main-content{
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
+#main-content{
+  
     background: linear-gradient(41deg, rgba(26,209,123,1) 11%, rgba(63,63,79,1) 47%, rgba(26,28,28,1) 100%);
     width: 100%;
     margin-top: -4px;
@@ -133,11 +131,13 @@ header {
 
 .image-grid{
     display: flex;
+    position: relative;
     width: 90%;
     margin: 0 auto; 
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    background-color: linear-gradient(41deg, rgba(26,209,123,1) 11%, rgba(63,63,79,1) 47%, rgba(26,28,28,1) 100%);
     
 }
 
@@ -164,7 +164,6 @@ header {
     .image-grid{
         justify-content:space-around;
         align-items: center;
-
     }
    
 
@@ -193,3 +192,98 @@ header {
         flex-basis: 30%;
     }
 }
+
+/* Classes button */
+.view-class-btn{
+    padding: 10px 20px; 
+    background-color: #34E951; 
+    color: #000000; 
+    border-radius: 10px; 
+    width: 200px;
+    text-align: center;
+    font-family: 'Saira Condensed', sans-serif;  
+    font-size: 20px;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: 5x;
+    margin-bottom: 20px;
+   position: relative;
+}
+
+.view-class-btn:hover {
+    background-color: #00c020;
+    cursor: pointer;
+}
+
+
+/* INDEX SPLIT SECTION PARENT */
+.split {
+    display: flex;
+    width: 100%;
+}
+
+.split-left {
+    flex: 1;
+    background-image: url(../Images/background1.jpg);
+    background-size: cover;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; 
+    justify-content: center; 
+
+}
+
+.split-right {
+    flex: 1;
+    background-color: red;
+    height: 80vh;
+}
+
+.join-now{
+    color:#fff;
+   
+
+}
+
+@media (max-width: 1020px) {
+    .split {
+        flex-direction: column;
+    }
+
+    .split-left, .split-right {
+        width: 100%;
+        height: auto;
+    }
+}
+/* join now h1 */
+.join-now {
+    margin-bottom: auto; 
+    margin-top:40%;
+    text-transform: uppercase;
+}
+
+
+/* JOIN BTN */
+
+.join-btn{
+    padding: 10px 20px; 
+    background-color: #34E951; 
+    position: relative; 
+    top: -50px;
+    color: #000000; 
+    border-radius: 10px; 
+    width: 200px;
+    text-align: center;
+    font-family: 'Saira Condensed', sans-serif;  
+    font-size: 20px;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.join-btn:hover {
+    background-color: #00c020;
+    cursor: pointer;
+}
+
+
