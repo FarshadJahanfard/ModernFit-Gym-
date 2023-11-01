@@ -36,6 +36,10 @@
                                         Price: {{ $membership->price }}
                                         <br>
                                         Description: {{ $membership->description }}
+                                        <br>
+                                        Start Date: {{ $membership->pivot->start_date }}
+                                        <br>
+                                        End Date: {{ $membership->pivot->end_date }}
                                     </li>
                                 @endforeach
                             </ul>
@@ -44,17 +48,21 @@
                         @endif
 
                         <h3>Active Membership</h3>
-{{--                        @if ($user->activeMembership())--}}
-{{--                            <p>--}}
-{{--                                Membership Name: {{ $user->activeMembership()->name }}--}}
-{{--                                <br>--}}
-{{--                                Price: {{ $user->activeMembership()->price }}--}}
-{{--                                <br>--}}
-{{--                                Description: {{ $user->activeMembership()->description }}--}}
-{{--                            </p>--}}
-{{--                        @else--}}
-{{--                            <p>No active membership found.</p>--}}
-{{--                        @endif--}}
+                        @if ($user->activeMembership())
+                            <p>
+                                Membership Name: {{ $user->activeMembership()->name }}
+                                <br>
+                                Price: {{ $user->activeMembership()->price }}
+                                <br>
+                                Description: {{ $user->activeMembership()->description }}
+                                <br>
+                                Start Date: {{ $membership->pivot->start_date }}
+                                <br>
+                                End Date: {{ $membership->pivot->end_date }}
+                            </p>
+                        @else
+                            <p>No active membership found.</p>
+                        @endif
                     </div>
                 </div>
             </div>

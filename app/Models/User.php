@@ -143,10 +143,12 @@ class User extends Authenticatable
         $currentDate = now()->toDateString(); // Get the current date
 
         // Use the pivot table to filter for active memberships
-        $activeMembership = $this->memberships()->first(function ($membership) use ($currentDate) {
-            return $currentDate >= $membership->pivot->start_date &&
-                $currentDate <= $membership->pivot->end_date;
-        });
+        $activeMembership = $this->belongsToMany(Membership::class)
+            ->withPivot('start_date', 'end_date', 'passcode')
+            ->wherePivot('start_date', '<=', now()) // Check if the membership start date is before or equal to the current date
+            ->wherePivot('end_date', '>=', now())   // Check if the membership end date is after or equal to the current date
+            ->first();
+
 
         return $activeMembership;
     }
