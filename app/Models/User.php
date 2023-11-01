@@ -131,7 +131,7 @@ class User extends Authenticatable
     public function memberships()
     {
         return $this->belongsToMany(Membership::class)
-            ->withPivot('start_date', 'end_date');
+            ->withPivot('start_date', 'end_date', 'passcode');
     }
 
     /**

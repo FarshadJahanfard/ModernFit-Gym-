@@ -3,7 +3,12 @@
 @section('content')
     <div class="container">
         <h1>Create Branch</h1>
-        <a href="/branches" class="btn btn-primary">Back to Branches</a>
+        <a href="/branches" class="btn btn-secondary btn-sm"
+           data-toggle="tooltip" data-placement="left"
+           title="Branches">
+            <i class="fa fa-fw fa-mail-reply" aria-hidden="true"></i>
+            Back to Branches
+        </a>
 
         <form action="/branches" method="POST">
             @csrf
