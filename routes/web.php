@@ -34,8 +34,12 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     Route::get('/activation', ['as' => 'authenticated.activation-resend', 'uses' => 'App\Http\Controllers\Auth\ActivateController@resend']);
     Route::get('/exceeded', ['as' => 'exceeded', 'uses' => 'App\Http\Controllers\Auth\ActivateController@exceeded']);
 
-    // Route to for user to reactivate their user deleted account.
+    // Route for user to reactivate their user deleted account.
     Route::get('/re-activate/{token}', ['as' => 'user.reactivate', 'uses' => 'App\Http\Controllers\RestoreUserController@userReActivate']);
+
+    // Route for buying day passes.
+    Route::get('/daypass', 'App\Http\Controllers\DayPassController@create')->name('daypass.create');
+    Route::post('/daypass', 'App\Http\Controllers\DayPassController@store')->name('daypass.store');
 });
 
 // Registered and Activated User Routes
