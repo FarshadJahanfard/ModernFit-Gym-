@@ -21,7 +21,9 @@
    <img src="./Images/gym4.jpg" class="flex-item" alt="Two individuals engaged in boxing practice.">
    <img src="./Images/gym5.jpg" class="flex-item" alt="A group of people exercising together.">
    <img src="./Images/gym6.jpg" class="flex-item" alt="A man performing a chest press exercise.">
+   <div class="button-align">
    <button class="view-class-btn">View Classes</button>
+   </div>
 </div>
 
 <div class="split">
