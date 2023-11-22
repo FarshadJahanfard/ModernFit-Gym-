@@ -67,7 +67,6 @@ class DayPassController extends Controller
 
         $dayPass->save();
 
-        // TODO: Send an email with the passcode to the user
         Mail::to($request->input('email'))->send(new DayPassMail($dayPass));
 
         return redirect('/daypass/' . $dayPass->id)->with('success', 'Day Pass created successfully');
