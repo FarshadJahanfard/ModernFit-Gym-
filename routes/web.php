@@ -40,6 +40,8 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     // Route for buying day passes.
     Route::get('/daypass', 'App\Http\Controllers\DayPassController@create')->name('daypass.create');
     Route::post('/daypass', 'App\Http\Controllers\DayPassController@store')->name('daypass.store');
+    // Route to show day pass details.
+    Route::get('/daypass/{passId}', 'App\Http\Controllers\DayPassController@show')->name('daypass.show');
 });
 
 // Registered and Activated User Routes

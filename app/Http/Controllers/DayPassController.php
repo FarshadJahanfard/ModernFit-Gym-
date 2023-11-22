@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\DayPassMail;
 use App\Models\Branch;
 use App\Models\DayPass;
-use Illuminate\Contracts\Notifications\Dispatcher;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 
 class DayPassController extends Controller
 {
+    use Notifiable;
     /**
      * Display a listing of the resource.
      */
@@ -51,7 +55,7 @@ class DayPassController extends Controller
 
         $passcode = mt_rand(10000000, 99999999); // Generate an 8-digit passcode
 
-        $branch_id = $request->input('branch_id') ?? 3;
+        $branch_id = $request->input('branch_id');
 
         $dayPass = new DayPass([
             'email' => $request->input('email'),
@@ -61,21 +65,25 @@ class DayPassController extends Controller
             'passcode' => $passcode,
         ]);
 
-//        $dayPass->save();
+        $dayPass->save();
 
-        // Send an email with the passcode to the user (You need to implement this part)
+        Mail::to($request->input('email'))->send(new DayPassMail($dayPass));
 
-        return redirect()
-            ->route('day-passes.show', ['day_pass' => $dayPass->id])
-            ->with('success', 'Day Pass created successfully');
+        return redirect('/daypass/' . $dayPass->id)->with('success', 'Day Pass created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($passId)
     {
-        //
+        try {
+            $dayPass = DayPass::findOrFail($passId);
+        } catch (ModelNotFoundException $exception) {
+            abort(404);
+        }
+
+        return view('daypasses.show', compact('dayPass'));
     }
 
     /**
