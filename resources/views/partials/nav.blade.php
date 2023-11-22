@@ -28,7 +28,7 @@
                                 Branches Administration
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('memberships') ? 'active' : null }}" href="{{ url('/memberships') }}">
+                            <a class="dropdown-item {{ Request::is('memberships') ? 'active' : null }}" href="{{ url('/admin/memberships') }}">
                                 Memberships
                             </a>
                             <div class="dropdown-divider"></div>
@@ -60,6 +60,9 @@
                         </div>
                     </li>
                 @endrole
+                <li class="nav-item">
+                    <a class="nav-link" href='{{ url('/memberships') }}'>Memberships</a>
+                </li>
             </ul>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MembershipController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,13 +43,8 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     Route::post('/daypass', 'App\Http\Controllers\DayPassController@store')->name('daypass.store');
     // Route to show day pass details.
     Route::get('/daypass/{passId}', 'App\Http\Controllers\DayPassController@show')->name('daypass.show');
-});
 
-// Registered and Activated User Routes
-Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
-    // Activation Routes
-    Route::get('/activation-required', ['uses' => 'App\Http\Controllers\Auth\ActivateController@activationRequired'])->name('activation-required');
-    // Route::get('/logout', ['uses' => 'App\Http\Controllers\Auth\LoginController@logout'])->name('logout');
+    Route::get('/memberships', 'App\Http\Controllers\MembershipController@show')->name('memberships.info');
 });
 
 // Registered and Activated User Routes
@@ -65,6 +61,10 @@ Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
         'as'   => '{username}',
         'uses' => 'App\Http\Controllers\ProfilesController@show',
     ]);
+
+    // Activation Routes
+    Route::get('/activation-required', ['uses' => 'App\Http\Controllers\Auth\ActivateController@activationRequired'])
+        ->name('activation-required');
 });
 
 // Registered, activated, and is current user routes.
@@ -102,6 +102,9 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']],
 
     // Route to upload user avatar.
     Route::post('avatar/upload', ['as' => 'avatar.upload', 'uses' => 'App\Http\Controllers\ProfilesController@upload']);
+
+    // Route to buy memberships
+    Route::post('/memberships/purchase/{membership}', [MembershipController::class, 'purchase'])->name('memberships.purchase');
 });
 
 // Registered, activated, and is admin routes.
@@ -132,7 +135,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () 
     ]);
     Route::get('branches/{id}', 'BranchController@show')->name('branches.show');
 
-    Route::resource('memberships', \App\Http\Controllers\MembershipController::class, [
+    Route::resource('admin/memberships', \App\Http\Controllers\MembershipController::class, [
         'names' => [
             'index' => 'memberships',
             'edit' => 'memberships.edit',
