@@ -45,6 +45,9 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     Route::get('/daypass/{passId}', 'App\Http\Controllers\DayPassController@show')->name('daypass.show');
 
     Route::get('/memberships', 'App\Http\Controllers\MembershipController@show')->name('memberships.info');
+
+    // Route to classes
+    Route::get('/classes', 'App\Http\Controllers\ClassesController@show')->name('classes');
 });
 
 // Registered and Activated User Routes
