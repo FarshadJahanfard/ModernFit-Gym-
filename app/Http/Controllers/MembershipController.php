@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Mail\MembershipMail;
 use App\Models\Membership;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Validator;
 use Auth;
 
@@ -90,30 +92,8 @@ class MembershipController extends Controller
     {
         $user = Auth::user();
 
-//        // Check if the user already has this membership with expired dates
-//        $expiredMembership = $user->memberships()
-//            ->where('membership_id', $membershipId)
-//            ->where('end_date', '<', now())
-//            ->first();
-//
-//        $passcode = rand(10000000, 99999999);
-//
-//        if ($expiredMembership) {
-//            // Expired membership found, allow the user to purchase a new one
-//            $expiredMembership->pivot->update([
-//                'start_date' => now(),
-//                'end_date' => now()->addMonth(),
-//                'passcode' => $passcode,
-//            ]);
-//
-//            return redirect()->route('membershipsinfo')->with('success', 'New membership purchased successfully.');
-//        }
-
         // Check if the user already has an active membership
-        $activeMembership = $user->memberships()
-            ->where('membership_id', $membershipId)
-            ->where('end_date', '>=', now())
-            ->first();
+        $activeMembership = $user->activeMembership();
 
         if ($activeMembership) {
             return redirect()->route('memberships.info')->with('error', 'You already have an active membership.');
@@ -130,6 +110,8 @@ class MembershipController extends Controller
             'end_date' => $endDate,
             'passcode' => $passcode,
         ]);
+
+        Mail::to($user->email)->send(new MembershipMail($user->activeMembership()));
 
         return redirect()->route('memberships.info')->with('success', 'Membership purchased successfully.');
     }

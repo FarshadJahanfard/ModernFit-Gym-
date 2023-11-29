@@ -18,8 +18,8 @@ class DayPassMail extends Mailable
 
     public function build()
     {
-        return $this->subject('Day Pass Created Successfully')
-            ->markdown('emails.daypass.created');
+        return $this->subject('Day Pass Purchased Successfully')
+            ->markdown('emails.daypass');
     }
 }
 ?>
