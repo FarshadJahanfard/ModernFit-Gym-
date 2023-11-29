@@ -140,7 +140,7 @@ class User extends Authenticatable
 
     public function activeMembership()
     {
-        $today = now()->toDateString();
+        $today = now();
 
         $activeMembership = $this->belongsToMany(Membership::class)
             ->withPivot('start_date', 'end_date', 'passcode')
