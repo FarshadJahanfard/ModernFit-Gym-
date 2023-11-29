@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use Validator;
+use Auth;
 
 class MembershipController extends Controller
 {
@@ -21,6 +22,12 @@ class MembershipController extends Controller
     public function create()
     {
         return view('memberships.create');
+    }
+
+    public function show()
+    {
+        $memberships = Membership::all();
+        return view('memberships.info', compact('memberships'));
     }
 
     public function store(Request $request)
@@ -77,6 +84,54 @@ class MembershipController extends Controller
         $membership->delete();
 
         return redirect()->route('memberships')->with('success', 'Membership deleted successfully');
+    }
+
+    public function purchase($membershipId)
+    {
+        $user = Auth::user();
+
+//        // Check if the user already has this membership with expired dates
+//        $expiredMembership = $user->memberships()
+//            ->where('membership_id', $membershipId)
+//            ->where('end_date', '<', now())
+//            ->first();
+//
+//        $passcode = rand(10000000, 99999999);
+//
+//        if ($expiredMembership) {
+//            // Expired membership found, allow the user to purchase a new one
+//            $expiredMembership->pivot->update([
+//                'start_date' => now(),
+//                'end_date' => now()->addMonth(),
+//                'passcode' => $passcode,
+//            ]);
+//
+//            return redirect()->route('membershipsinfo')->with('success', 'New membership purchased successfully.');
+//        }
+
+        // Check if the user already has an active membership
+        $activeMembership = $user->memberships()
+            ->where('membership_id', $membershipId)
+            ->where('end_date', '>=', now())
+            ->first();
+
+        if ($activeMembership) {
+            return redirect()->route('memberships.info')->with('error', 'You already have an active membership.');
+        }
+
+        // If no membership found, proceed to purchase a new one
+        $startDate = now();
+        $endDate = $startDate->copy()->addMonth();
+
+        $passcode = mt_rand(10000000, 99999999);
+        // Attach the membership to the user with the additional information
+        $user->memberships()->attach($membershipId, [
+            'start_date' => $startDate,
+            'end_date' => $endDate,
+            'passcode' => $passcode,
+        ]);
+
+        return redirect()->route('memberships.info')->with('success', 'Membership purchased successfully.');
     }
 }
 
