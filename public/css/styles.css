@@ -266,7 +266,7 @@ header {
 
 .split-left {
     flex: 1;
-    background-image: url(../Images/background1.jpg);
+    background-image: url('../images/background1.svg');
     background-size: cover;
     height: 80vh;
     display: flex;
