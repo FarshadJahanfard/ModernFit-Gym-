@@ -6,7 +6,7 @@
     <form action="{{ route('welcome') }}" method="get">
         <button type="submit" class="view-class-btn">Home</button>
     </form>
-    <h1>Classes</h1>
+    <h1>Nutritional</h1>
 </div>
 
 @endsection

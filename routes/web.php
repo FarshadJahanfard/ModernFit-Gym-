@@ -48,6 +48,9 @@ Route::group(['middleware' => ['web', 'activity']], function () {
 
     // Route to classes
     Route::get('/classes', 'App\Http\Controllers\ClassesController@show')->name('classes');
+
+    // Route to nutrition
+    Route::get('/nutritional', 'App\Http\Controllers\NutritionalController@show')->name('nutritional');
 });
 
 // Registered and Activated User Routes
