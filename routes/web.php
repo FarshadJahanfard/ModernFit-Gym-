@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route to nutrition page
+use App\Http\Controllers\NutritionController;
+
+Route::get('/nutrition', [NutritionController::class, 'show']);
+
 // Still trying to get food creation to work
 use App\Http\Controllers\ExampleController;
 
