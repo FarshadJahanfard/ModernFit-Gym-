@@ -17,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Still trying to get food creation to work
+use App\Http\Controllers\ExampleController;
+
+Route::get('/example', [ExampleController::class, 'index']);
+
+// Food Contoller
+use App\Http\Controllers\FoodController;
+
+Route::get('/food/form', [FoodController::class, 'showForm']);
+Route::post('/food/process', [FoodController::class, 'processForm']);
+
+// Food Creation Route
+Route::get('/create-food', [FoodController::class, 'create']);
+
 // Homepage Route
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'App\Http\Controllers\WelcomeController@welcome')->name('welcome');
