@@ -266,7 +266,7 @@ header {
 
 .split-left {
     flex: 1;
-    background-image: url('../images/background1.svg');
+    background-image: url('../images/background1-min.webp');
     background-size: cover;
     height: 80vh;
     display: flex;
@@ -329,6 +329,7 @@ header {
     font-size: 20px;
     line-height: normal;
     text-transform: uppercase;
+    margin-top: 28px;
 }
 .join-btn:hover {
     background-color: #00c020;
