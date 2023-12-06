@@ -7,6 +7,11 @@
 </head>
 <body> --}}
 
+    {{-- <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
+        @csrf
+        <button type="submit">Add to Daily Calories</button>
+    </form> --}}
+    
 <form action="{{ url('/food/process') }}" method="post">
     @csrf
 

@@ -43,6 +43,7 @@
 <h2>Total Calorie Allowance: {{ $dailyCalorieCount }}</h2>
 
 @forelse($foods as $food)
+<div class="food-tab">
     <h2>{{ $food->name }}</h2>
     <p>Quantity: {{ $food->quantity }}</p>
     <p>Calories: {{ $food->calories }}</p>
@@ -50,12 +51,15 @@
     @if($food->vegetarian)
         <p>Vegetarian Option</p>
     @endif
-
     <!-- Form to add food to user's list -->
     <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
         @csrf
         <button type="submit">Add to Daily Calories</button>
     </form>
+</div>
+
+
+
 
 @empty
     <p>No nutrition information available.</p>

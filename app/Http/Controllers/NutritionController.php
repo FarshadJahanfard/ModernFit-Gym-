@@ -8,15 +8,6 @@ use App\Models\Food;
 
 class NutritionController extends Controller
 {
-    // public function show()
-    // {
-    //     // Retrieve a food item from the database (you can adjust the query as needed)
-    //     $food = Food::first();
-
-    //     // Pass the food item to the nutrition view
-    //     return view('nutrition.show', compact('food'));
-    // }
-
     public function show()
     {
         // Retrieve all food items from the database
@@ -29,24 +20,6 @@ class NutritionController extends Controller
         return view('nutrition.show', compact('foods', 'runningTotal'));
     }
     
-    // public function addFood(Request $request, $id)
-    // {
-    //     // Find the food item by ID
-    //     $food = Food::find($id);
-
-    //     // Get the currently authenticated user
-    //     $user = Auth::user();
-
-    //     // Associate the food item with the user
-    //     $user->foods()->attach($food->id);
-
-    //     // Update the user's daily calorie count
-    //     $user->dailyCalories += $food->calories;
-    //     $user->save();
-
-    //     // Redirect back to the nutrition page
-    //     return redirect()->route('nutrition.show');
-    // }
     public function addFood(Request $request, $id)
     {
         // Find the food item by ID

@@ -17,7 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route to nutrition page
+
+// Dashboard Routes
+use App\Http\Controllers\DashboardController;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
+// Nutrition Routes
 use App\Http\Controllers\NutritionController;
 
 Route::get('/nutrition', [NutritionController::class, 'show']);

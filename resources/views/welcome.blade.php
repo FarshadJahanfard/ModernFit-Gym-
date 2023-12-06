@@ -1,27 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-            {{-- Homepage --}}
-{{-- <div class="homepage-container">
-    <div class="our-services">
-        <div class="service-tab">
-            <h1>Gym Access</h1>
-        </div>
-        <div class="service-tab">
-            <h1>Workout Advice</h1>
-        </div>
-        <div class="service-tab">
-            <h1>Nutritional Advice</h1>
-        </div>
-    </div>
-    <div class="our-classes">
-        <a href="{{ route('classes') }}"> View Classes </a>
-    </div>
-</div> --}}
-
-<?php
-//   include("./includes/header.php");
-?>
 
 <div class="image-grid" id="main-content">
    <img src="{{ asset('images/gym1.svg') }}" class="flex-item" alt="A man is lifting a weight.">
