@@ -1,11 +1,14 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Information</title>
 </head>
-<body>
+<body> --}}
 
     {{-- @foreach($foods as $food)
     @php
@@ -75,36 +78,38 @@
 </body>
 </html> --}}
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nutrition Information</title>
 </head>
-<body>
+<body> --}}
 
 @php
     $dailyCalorieCount = 2000;
 @endphp
 
-<h1>Nutrition Information</h1>
-<h2>Total Calorie Allowance: {{ $dailyCalorieCount }}</h2>
-@if($dailyCalorieCount < $runningTotal)
-    <h3>You have exceeded your daily calorie count!</h3>
-@else
-<p>Remaining Calorie Allowance: {{ $dailyCalorieCount - $runningTotal }}</p>
-@endif
-<h3>Testing running total: {{ $runningTotal }}</h3>
-
-@forelse($foods as $food)
-    <h2>{{ $food->name }}</h2>
-    <p>Quantity: {{ $food->quantity }}</p>
-    <p>Calories: {{ $food->calories }}</p>
-    <p>Description: {{ $food->description }}</p>
-    @if($food->vegetarian)
-        <p>Vegetarian Option</p>
+    <h1>Nutrition Information</h1>
+    <h2>Total Calorie Allowance: {{ $dailyCalorieCount }}</h2>
+    @if($dailyCalorieCount < $runningTotal)
+        <h3>You have exceeded your daily calorie count!</h3>
+    @else
+    <p>Remaining Calorie Allowance: {{ $dailyCalorieCount - $runningTotal }}</p>
     @endif
+    <h3>Testing running total: {{ $runningTotal }}</h3>
+    
+    @forelse($foods as $food)
+        <div class="food-tab">
+            <h2>{{ $food->name }}</h2>
+            <p>Quantity: {{ $food->quantity }}</p>
+            <p>Calories: {{ $food->calories }}</p>
+            <p>Description: {{ $food->description }}</p>
+            @if($food->vegetarian)
+                <p>Vegetarian Option</p>
+            @endif
+        </div>
 
     @php
         // Calculate running total of calories
@@ -115,5 +120,7 @@
     <p>No nutrition information available.</p>
 @endforelse
 
-</body>
-</html>
+{{-- </body>
+</html> --}}
+
+@endsection
