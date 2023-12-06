@@ -17,6 +17,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route to nutrition page
+use App\Http\Controllers\NutritionController;
+
+Route::get('/nutrition', [NutritionController::class, 'show']);
+
+// Still trying to get food creation to work
+use App\Http\Controllers\ExampleController;
+
+Route::get('/example', [ExampleController::class, 'index']);
+
+// Food Contoller
+use App\Http\Controllers\FoodController;
+
+Route::get('/food/form', [FoodController::class, 'showForm']);
+Route::post('/food/process', [FoodController::class, 'processForm']);
+
+// Food Creation Route
+Route::get('/create-food', [FoodController::class, 'create']);
+
 // Homepage Route
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'App\Http\Controllers\WelcomeController@welcome')->name('welcome');
@@ -45,6 +64,12 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     Route::get('/daypass/{passId}', 'App\Http\Controllers\DayPassController@show')->name('daypass.show');
 
     Route::get('/memberships', 'App\Http\Controllers\MembershipController@show')->name('memberships.info');
+
+    // Route to classes
+    Route::get('/classes', 'App\Http\Controllers\ClassesController@show')->name('classes');
+
+    // Route to nutrition
+    Route::get('/nutritional', 'App\Http\Controllers\NutritionalController@show')->name('nutritional');
 });
 
 // Registered and Activated User Routes
