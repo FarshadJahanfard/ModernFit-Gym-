@@ -46,4 +46,9 @@ class Food extends Model
             'vegetarian' => $data['vegetarian'],
         ]);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

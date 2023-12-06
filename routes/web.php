@@ -22,6 +22,11 @@ use App\Http\Controllers\NutritionController;
 
 Route::get('/nutrition', [NutritionController::class, 'show']);
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/nutrition', [NutritionController::class, 'show'])->name('nutrition.show');
+    Route::post('/nutrition/add/{id}', [NutritionController::class, 'addFood'])->name('addFood');
+});
+
 // Still trying to get food creation to work
 use App\Http\Controllers\ExampleController;
 
