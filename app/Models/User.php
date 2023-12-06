@@ -131,7 +131,7 @@ class User extends Authenticatable
     public function memberships()
     {
         return $this->belongsToMany(Membership::class)
-            ->withPivot('start_date', 'end_date', 'passcode');
+            ->withPivot('start_date', 'end_date', 'passcode', 'branch_id');
     }
 
     /**
@@ -142,13 +142,19 @@ class User extends Authenticatable
     {
         $today = now();
 
-        $activeMembership = $this->belongsToMany(Membership::class)
-            ->withPivot('start_date', 'end_date', 'passcode')
-            ->wherePivot('start_date', '<=', $today)
+        $activeMembership = $this->memberships()
             ->wherePivot('end_date', '>=', $today)
+            ->with('branch')
             ->first();
 
+        if ($activeMembership) {
+            $branchId = $activeMembership->pivot->branch_id;
 
+            // Retrieve the branch using the branch_id from the pivot table
+            $branch = Branch::find($branchId);
+
+            $activeMembership->branch = $branch;
+        }
         return $activeMembership;
     }
 

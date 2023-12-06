@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\MembershipMail;
+use App\Models\Branch;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -29,7 +30,8 @@ class MembershipController extends Controller
     public function show()
     {
         $memberships = Membership::all();
-        return view('memberships.info', compact('memberships'));
+        $branches = Branch::all();
+        return view('memberships.info', compact('memberships', 'branches'));
     }
 
     public function store(Request $request)
@@ -102,6 +104,7 @@ class MembershipController extends Controller
         // If no membership found, proceed to purchase a new one
         $startDate = now();
         $endDate = $startDate->copy()->addMonth();
+        $branchId = request('branch');
 
         $passcode = mt_rand(10000000, 99999999);
         // Attach the membership to the user with the additional information
@@ -109,6 +112,7 @@ class MembershipController extends Controller
             'start_date' => $startDate,
             'end_date' => $endDate,
             'passcode' => $passcode,
+            'branch_id' => $branchId
         ]);
 
         Mail::to($user->email)->send(new MembershipMail($user->activeMembership()));

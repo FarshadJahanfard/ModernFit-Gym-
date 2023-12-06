@@ -89,6 +89,26 @@ class ProfilesController extends Controller
         return view('profiles.edit')->with($data);
     }
 
+    public function memberships($username)
+    {
+        try {
+            $user = $this->getUserByUsername($username);
+        } catch (ModelNotFoundException $exception) {
+            abort(404);
+        }
+
+        $memberships = $user->memberships()->get();
+        $activeMembership = $user->activeMembership();
+
+        $data = [
+            'user'             => $user,
+            'memberships'      => $memberships,
+            'activeMembership' => $activeMembership,
+        ];
+
+        return view('profiles.memberships')->with($data);
+    }
+
     /**
      * Update a user's profile.
      *

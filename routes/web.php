@@ -82,6 +82,13 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']],
             ],
         ]
     );
+
+    // User memberships
+    Route::get('profile/{username}/memberships', [
+        'as'   => 'profile.memberships',
+        'uses' => 'App\Http\Controllers\ProfilesController@memberships',
+    ]);
+
     Route::put('profile/{username}/updateUserAccount', [
         'as'   => 'profile.updateUserAccount',
         'uses' => 'App\Http\Controllers\ProfilesController@updateUserAccount',

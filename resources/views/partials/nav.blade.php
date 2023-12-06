@@ -86,6 +86,9 @@
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name) ? 'active' : null }}" href="{{ url('/profile/'.Auth::user()->name) }}">
                                 {!! trans('titles.profile') !!}
                             </a>
+                            <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/memberships') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/memberships') }}">
+                                Memberships
+                            </a>
                             <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/edit') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/edit') }}">
                                 Settings
                             </a>
