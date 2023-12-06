@@ -24,23 +24,23 @@
 ?>
 
 <div class="image-grid" id="main-content">
-   <img src="{{ asset('images/gym1.svg') }}" class="flex-item" alt="A man is lifting a weight.">
-   <img src="{{ asset('images/gym2.svg') }}" class="flex-item" alt="A group of individuals engaged in a workout session.">
-   <img src="{{ asset('images/gym3.svg') }}" class="flex-item" alt="A man performing push-ups.">
-   <img src="{{ asset('images/gym4.svg') }}" class="flex-item" alt="Two individuals engaged in boxing practice.">
-   <img src="{{ asset('images/gym5.svg') }}" class="flex-item" alt="A group of people exercising together.">
-   <img src="{{ asset('images/gym6.svg') }}" class="flex-item" alt="A man performing a chest press exercise.">
-   <div class="button-align">
-    <form action="{{ route('classes') }}" method="get">
-        <button type="submit" class="view-class-btn">View Classes</button>
-    </form>
-   {{-- <a href="{{ route('classes') }}"> View Classes </a> --}}
+    <img src="{{ asset('images/gym1-min.webp') }}" class="flex-item" alt="A man is lifting a weight." loading="lazy">
+    <img src="{{ asset('images/gym2-min.webp') }}" class="flex-item" alt="A group of individuals engaged in a workout session." loading="lazy">
+    <img src="{{ asset('images/gym3-min-min.webp') }}" class="flex-item" alt="A man performing push-ups." loading="lazy">
+    <img src="{{ asset('images/gym4-min.webp') }}" class="flex-item" alt="Two individuals engaged in boxing practice." loading="lazy">
+    <img src="{{ asset('images/gym5-min.webp') }}" class="flex-item" alt="A group of people exercising together." loading="lazy">
+    <img src="{{ asset('images/gym6-min.webp') }}" class="flex-item" alt="A man performing a chest press exercise." loading="lazy">
+    <div class="button-align">
+       <form action="{{ route('classes') }}" method="get">
+          <button type="submit" class="view-class-btn">View Classes</button>
+       </form>
+    </div>
+ </div>
 
-   </div>
-</div>
 
 <div class="split">
   <div class="split-left">
+    <img src="{{ asset('background1-min.webp') }}" class="flex-item" alt="A man is lifting a weight." loading="lazy">
     <h1 class="join-now">join now from £21.99 a month</h1>
     <button class="join-btn">Join Now</button>
 
