@@ -2,10 +2,16 @@
 
 @section('content')
 
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>
+
 <div class="food-split left">
     <!-- Display Community Foods -->
+    <h2>Community Foods</h2>
     <div class="foods-list">
-        <h2>Community Foods</h2>
         @forelse($communityFoods as $food)
             <!-- Display Community Food Details -->
                 <div class="food-tab">
@@ -31,8 +37,8 @@
 
 <div class="food-split right">
     <!-- Display Official Foods -->
+    <h2>Official Foods</h2>
     <div class="foods-list">
-        <h2>Official Foods</h2>
         @forelse($officialFoods as $food)
             <!-- Display Official Food Details -->   
             <div class="food-tab">
