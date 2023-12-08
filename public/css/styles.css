@@ -46,6 +46,32 @@
     justify-content: center;
 }
 
+.foods-list{
+    overflow-y: scroll;
+    /* overflow: hidden; */
+    height: 100%;
+    margin: 1rem;
+}
+
+.food-split {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    padding-top: 20px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    /* background-color: #111; */
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    /* background-color: red; */
+  }
+
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600&display=swap');
 
 .button-align{
