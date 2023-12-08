@@ -3,7 +3,8 @@
 @section('content')
 
 <div class="image-grid" id="main-content">
-   <img src="{{ asset('images/gym1.svg') }}" class="flex-item" alt="A man is lifting a weight.">
+   <img src="{{ asset('images/gym1.svg') }}" 
+   ="flex-item" alt="A man is lifting a weight.">
    <img src="{{ asset('images/gym2.svg') }}" class="flex-item" alt="A group of individuals engaged in a workout session.">
    <img src="{{ asset('images/gym3.svg') }}" class="flex-item" alt="A man performing push-ups.">
    <img src="{{ asset('images/gym4.svg') }}" class="flex-item" alt="Two individuals engaged in boxing practice.">

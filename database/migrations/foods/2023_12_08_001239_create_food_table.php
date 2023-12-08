@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('foods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('quantity');
             $table->integer('calories');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->boolean('vegetarian')->default(false);
+            $table->boolean('official')->default(false); // New column for distinguishing official foods
             $table->timestamps();
         });
     }

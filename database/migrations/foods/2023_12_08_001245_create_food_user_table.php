@@ -13,13 +13,11 @@ class CreateFoodUserTable extends Migration
             $table->unsignedBigInteger('food_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
             // Foreign key constraints
             $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
-
     public function down()
     {
         Schema::dropIfExists('food_user');
