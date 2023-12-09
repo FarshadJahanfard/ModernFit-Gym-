@@ -15,9 +15,10 @@
     
         {{-- <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" required><br> --}}
+
         <div class="food-form-section">
             <label for="calories">Calories:</label>
-            <input type="number" id="calories" name="calories" required><br>
+            <input type="number" min="1" value="100" id="calories" name="calories" required><br>
         </div>
 
         <div class="food-form-section">
