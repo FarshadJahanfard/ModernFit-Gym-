@@ -34,6 +34,10 @@
             @if($meal->vegetarian)
             <p>Vegetarian Option</p>
             @endif
+            <form action="{{ route('removeFood', ['id' => $meal->id]) }}" method="post">
+                @csrf
+                <button type="submit">Remove</button>
+            </form>
         </div>
         @endforeach
     </div>
