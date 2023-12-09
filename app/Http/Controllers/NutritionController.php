@@ -52,4 +52,60 @@ class NutritionController extends Controller
         // Redirect back to the nutrition page
         return redirect()->route('nutrition.show');
     }
+
+    public function likeFood($id)
+    {
+        $food = Food::find($id);
+        $user = Auth::user();
+
+        // Check if the user has already disliked the food
+        if ($user->dislikedFoods->contains($food->id)) {
+            // If disliked, remove the dislike
+            $user->dislikedFoods()->detach($food->id);
+            $food->dislikes -= 1;
+        }
+
+        // Check if the user has already liked the food
+        if (!$user->likedFoods->contains($food->id)) {
+            // If not liked, add the like
+            $user->likedFoods()->attach($food->id);
+            $food->likes += 1;
+        }
+
+        $food->save();
+        return redirect()->route('nutrition.show');
+    }
+
+    public function dislikeFood($id)
+    {
+        $food = Food::find($id);
+        $user = Auth::user();
+
+        // Check if the user has already liked the food
+        if ($user->likedFoods->contains($food->id)) {
+            // If liked, remove the like
+            $user->likedFoods()->detach($food->id);
+            $food->likes -= 1;
+        }
+
+        // Check if the user has already disliked the food
+        if (!$user->dislikedFoods->contains($food->id)) {
+            // If not disliked, add the dislike
+            $user->dislikedFoods()->attach($food->id);
+            $food->dislikes += 1;
+        }
+
+        $food->save();
+        return redirect()->route('nutrition.show');
+    }
+
+    private function userHasLiked(Food $food)
+    {
+        return Auth::user()->likedFoods->contains($food->id);
+    }
+
+    private function userHasDisliked(Food $food)
+    {
+        return Auth::user()->dislikedFoods->contains($food->id);
+    }
 }

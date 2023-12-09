@@ -194,4 +194,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Food::class)->withTimestamps();
     }
+
+    public function likedFoods()
+    {
+        return $this->belongsToMany(Food::class, 'user_likes')->withTimestamps();
+    }
+
+    public function dislikedFoods()
+    {
+        return $this->belongsToMany(Food::class, 'user_dislikes')->withTimestamps();
+    }
 }

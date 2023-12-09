@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->boolean('vegetarian')->default(false);
             $table->boolean('official')->default(false); // New column for distinguishing official foods
+            $table->integer('likes')->default(0);
+            $table->integer('dislikes')->default(0);
             $table->timestamps();
         });
     }

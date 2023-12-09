@@ -30,6 +30,12 @@ use App\Http\Controllers\NutritionController;
 
 Route::get('/nutrition', [NutritionController::class, 'show']);
 
+// Route::post('/like-food/{id}', 'NutritionController@likeFood')->name('likeFood');
+// Route::post('/dislike-food/{id}', 'NutritionController@dislikeFood')->name('dislikeFood');
+
+Route::post('/like-food/{id}', [NutritionController::class, 'likeFood'])->name('likeFood');
+Route::post('/dislike-food/{id}', [NutritionController::class, 'dislikeFood'])->name('dislikeFood');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/nutrition', [NutritionController::class, 'show'])->name('nutrition.show');
     Route::post('/nutrition/add/{id}', [NutritionController::class, 'addFood'])->name('addFood');

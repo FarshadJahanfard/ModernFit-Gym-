@@ -2,20 +2,43 @@
 
 @section('content')
 
-<h1>Welcome to Your Dashboard, {{ auth()->user()->name }}!</h1>
+<style>
+    body {
+        overflow: hidden;
+    }
+    .foods-list{
+        height: 85%;
+        width: 40rem;
+        border-radius: 40px;
+    }
+</style>
 
-<h2>Your Meals for Today</h2>
+<h1>Welcome to Your Dashboard, {{ auth()->user()->name }}!</h1>
 
 @if($meals->isEmpty())
     <p>No meals recorded for today.</p>
 @else
-    <ul>
-        @foreach($meals as $meal)
-            <li>{{ $meal->name }} - {{ $meal->calories }} calories</li>
-        @endforeach
-    </ul>
+<p>Total Calories for Today: {{ $totalCalories }}</p>
 
-    <p>Total Calories for Today: {{ $totalCalories }}</p>
+<div class="dashboard-container">
+    <div class="food-split left">
+        <h2>Todays Meals:</h2>
+        <div class="foods-list">
+        @foreach($meals as $meal)
+    
+        <div class="food-tab">
+            <h2>{{$meal->name}}</h2>
+            <p>Quantity: {{ $meal->quantity }}</p>
+            <p>Calories: {{ $meal->calories }}</p>
+            <p>Description: {{ $meal->description }}</p>
+            @if($meal->vegetarian)
+            <p>Vegetarian Option</p>
+            @endif
+        </div>
+        @endforeach
+    </div>
+</div>
+
 @endif
 
 @endsection
