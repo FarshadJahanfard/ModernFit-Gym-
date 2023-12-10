@@ -50,7 +50,7 @@ class NutritionController extends Controller
         $user->foods()->attach($food->id);
 
         // Redirect back to the nutrition page
-        return redirect()->route('nutrition.show');
+        return redirect()->route('nutrition.show')->with('success', 'Food has been added to todays meals.');
     }
 
     public function likeFood($id)

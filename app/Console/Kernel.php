@@ -23,6 +23,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 
         $schedule->command('activations:clean')->daily();
+        $schedule->command('foods:detach')->dailyAt('06:00'); // this is supposed to work everyday at 6am but for some reason the scheduling doesn't work. the command itself does though so i dont know.
     }
 
     /**

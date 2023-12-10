@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Models\Food;
 
@@ -26,6 +27,13 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('meals', 'totalCalories'));
     }
 
+    public function detachFoods()
+    {
+        Artisan::call('foods:detach');
+
+        return redirect()->route('dashboard')->with('success', 'Foods detached successfully.');
+    }
+
     public function removeFood(Request $request, $id)
     {
         // Find the food item by ID
@@ -38,7 +46,7 @@ class DashboardController extends Controller
         $user->foods()->detach($meal->id);
 
         // Redirect back to the nutrition page
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Food has been removed successfully.');
     }
 }
 

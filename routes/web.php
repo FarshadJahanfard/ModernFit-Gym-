@@ -26,6 +26,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/dashboard/remove/{id}', [DashboardController::class, 'removeFood'])->name('removeFood');
 });
 
+// For demonstration purposes
+Route::post('/detach-foods', [DashboardController::class, 'detachFoods'])->name('detach-foods');
+
+
 // Nutrition Routes
 use App\Http\Controllers\NutritionController;
 

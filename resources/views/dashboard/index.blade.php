@@ -15,6 +15,12 @@
 
 <h1>Welcome to Your Dashboard, {{ auth()->user()->name }}!</h1>
 
+<form action="{{ route('detach-foods') }}" method="post">
+    @csrf
+    <button type="submit">Detach Foods</button>
+    <p>This button is here for demonstration purposes only...</p>
+</form>
+
 @if($meals->isEmpty())
     <p>No meals recorded for today.</p>
 @else
