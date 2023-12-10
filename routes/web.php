@@ -25,19 +25,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/dashboard/remove/{id}', [DashboardController::class, 'removeFood'])->name('removeFood');
 });
-
 // For demonstration purposes
 Route::post('/detach-foods', [DashboardController::class, 'detachFoods'])->name('detach-foods');
 
+// Classes Routes
+use App\Http\Controllers\ClassesController;
+
+Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
+Route::post('/classes/add/{id}', [ClassesController::class, 'addClass'])->name('addClass');
+Route::post('/dashboard/remove/{id}', [ClassesController::class, 'removeClass'])->name('removeClass');
 
 // Nutrition Routes
 use App\Http\Controllers\NutritionController;
 
 Route::get('/nutrition', [NutritionController::class, 'show']);
-
-// Route::post('/like-food/{id}', 'NutritionController@likeFood')->name('likeFood');
-// Route::post('/dislike-food/{id}', 'NutritionController@dislikeFood')->name('dislikeFood');
-
 Route::post('/like-food/{id}', [NutritionController::class, 'likeFood'])->name('likeFood');
 Route::post('/dislike-food/{id}', [NutritionController::class, 'dislikeFood'])->name('dislikeFood');
 
@@ -46,10 +47,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/nutrition/add/{id}', [NutritionController::class, 'addFood'])->name('addFood');
 });
 
-// Still trying to get food creation to work
-use App\Http\Controllers\ExampleController;
+// // Still trying to get food creation to work
+// use App\Http\Controllers\ExampleController;
 
-Route::get('/example', [ExampleController::class, 'index']);
+// Route::get('/example', [ExampleController::class, 'index']);
 
 // Food Contoller
 use App\Http\Controllers\FoodController;

@@ -195,6 +195,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Food::class)->withTimestamps();
     }
 
+    public function classes()
+    {
+        return $this->belongsToMany(OfferedClass::class, 'classes_user', 'user_id', 'class_id');
+    }
+
     public function likedFoods()
     {
         return $this->belongsToMany(Food::class, 'user_likes')->withTimestamps();
