@@ -4,6 +4,8 @@
     <div class="container mt-4">
         <h2>Your Workout Plans</h2>
 
+        <a href="{{ route('workout_plans.create') }}" class="btn btn-success mb-3">Add Plan</a>
+
         @if(count($workoutPlans) > 0)
             <ul class="list-group mt-3">
                 @foreach($workoutPlans as $workoutPlan)
