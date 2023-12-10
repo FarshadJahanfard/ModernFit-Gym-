@@ -44,7 +44,8 @@ class WorkoutPlanController extends Controller
             ]);
         }
 
-        return redirect()->route('workout_plans.edit', ['id' => $workoutPlan->id]);
+        return redirect()->route('workout_plans', ['username' => $user->name])
+            ->with('success', 'Workout plan created successfully.');
     }
 
     public function update(Request $request, $id)
@@ -90,8 +91,7 @@ class WorkoutPlanController extends Controller
         $workoutPlan = WorkoutPlan::findOrFail($id);
         $workoutPlan->delete();
 
-        return redirect()->route('workout_plans')
-            ->with('username', $user->username)
+        return redirect()->route('workout_plans', ['username' => $user->name])
             ->with('success', 'Workout plan deleted successfully.');
     }
 }

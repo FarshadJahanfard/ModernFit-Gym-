@@ -37,8 +37,10 @@
 
             <button type="button" class="btn btn-success mr-2" id="add-exercise">Add Exercise</button>
             <button type="submit" class="btn btn-primary">Update Workout Plan</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete Workout Plan</button>
         </form>
     </div>
+    @include('plans.delete-modal')
 
     <script src="{{ asset('js/exercise-management.js') }}"></script>
 @endsection

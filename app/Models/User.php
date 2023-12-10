@@ -194,7 +194,6 @@ class User extends Authenticatable
     {
         return $this->profiles()->detach($profile);
     }
-    //TODO: add userId to the table
 
     public function workoutPlans() {
         return $this->hasMany(WorkoutPlan::class);
