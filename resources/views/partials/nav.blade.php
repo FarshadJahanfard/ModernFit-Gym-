@@ -89,6 +89,11 @@
                             <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/memberships') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/memberships') }}">
                                 Memberships
                             </a>
+                            @role('trainer')
+                            <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/plans') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/plans') }}">
+                                Plans
+                            </a>
+                            @endrole
                             <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/edit') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/edit') }}">
                                 Settings
                             </a>

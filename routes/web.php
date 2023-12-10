@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\WorkoutPlanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -177,6 +178,17 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () 
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'App\Http\Controllers\AdminDetailsController@listRoutes');
+});
+
+// Registered, activated, and is trainer routes.
+Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function () {
+    Route::get('/profile/{username}/plans', [WorkoutPlanController::class, 'index'])->name('workout_plans');
+
+    Route::get('/workout_plans/create', [WorkoutPlanController::class, 'create'])->name('workout_plans.create');
+    Route::post('/workout_plans/store', [WorkoutPlanController::class, 'store'])->name('workout_plans.store');
+    Route::get('/workout_plans/{id}/edit', [WorkoutPlanController::class, 'edit'])->name('workout_plans.edit');
+    Route::put('/workout_plans/{id}', [WorkoutPlanController::class, 'update'])->name('workout_plans.update');
+    Route::delete('/workout_plans/{id}', [WorkoutPlanController::class, 'delete'])->name('workout_plans.destroy');
 });
 
 Route::redirect('/php', '/phpinfo', 301);
