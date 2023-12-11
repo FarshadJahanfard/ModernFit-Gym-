@@ -40,13 +40,15 @@
                     </thead>
                     <tbody>
                     @foreach($assignment->workoutPlan->exercises as $exercise)
+                        @php
+                            $amount = calculateAmountDone($logs, $exercise->id, $exercise->amount);
+                            $progress = calculateProgress($logs, $exercise->id, $exercise->amount);
+                            $progressClass = $progress >= 100 ? 'progress-complete' : '';
+                        @endphp
                         <tr>
                             <td>{{ $exercise->exercise_name }}</td>
                             <td>
                                 <div class="amount-done-container">
-                                    @php
-                                        $amount = calculateAmountDone($logs, $exercise->id, $exercise->amount);
-                                    @endphp
                                     <form class="amount-done-form d-flex flex-gap" method="post" action="{{ route('workout_logs.store', ['assignmentId' => $assignment->id]) }}">
                                         @csrf
                                         <input type="hidden" name="exercise_id" value="{{ $exercise->id }}">
@@ -59,21 +61,53 @@
                             </td>
                             <td>{{ $exercise->amount }}</td>
                             <td>{{ $exercise->note }}</td>
-                            <td>
-                                @php
-                                    $progress = calculateProgress($logs, $exercise->id, $exercise->amount);
-                                @endphp
+                            <td class="{{ $progressClass }}">
                                 {{ $progress }}%
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+
+                <style>
+                    .progress-complete {
+                        background-color: #4CAF50; /* Green background */
+                        color: white; /* White text */
+                    }
+                </style>
             </div>
 
             <!-- Right part - Workout Logs -->
             <div class="col-md-6">
                 <h3>Workout Logs</h3>
+
+                <form action="{{ route('workout_logs.store', ['assignmentId' => $assignment->id]) }}" method="post">
+                    @csrf
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-4">
+                            <label for="exercise_id" class="form-label">Select Exercise</label>
+                            <select class="form-select" id="exercise_id" name="exercise_id" required>
+                                @foreach($assignment->workoutPlan->exercises as $exercise)
+                                    <option value="{{ $exercise->id }}">{{ $exercise->exercise_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="sets" class="form-label">Sets</label>
+                            <input type="number" class="form-control" id="sets" name="sets" min="0" step="1" required>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="note" class="form-label">Note</label>
+                            <textarea class="form-control" id="note" name="note"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-end">
+                            <button type="submit" class="btn btn-primary">Add Log</button>
+                        </div>
+                    </div>
+                </form>
+
                 <table class="table table-bordered">
                     <thead>
                     <tr>
