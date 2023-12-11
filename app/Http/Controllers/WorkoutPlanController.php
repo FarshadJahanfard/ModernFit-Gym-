@@ -77,15 +77,23 @@ class WorkoutPlanController extends Controller
             'note.*' => 'nullable|string',
         ]);
 
-        // Delete existing exercises for the workout plan
-        $workoutPlan->exercises()->delete();
-
+        // Loop through provided exercises
         foreach ($exerciseData['exercise_name'] as $key => $exercise) {
-            $workoutPlan->exercises()->create([
-                'exercise_name' => $exercise,
-                'amount' => $exerciseData['amount'][$key],
-                'note' => $exerciseData['note'][$key],
-            ]);
+            // Check if the exercise already exists, update it; otherwise, create a new one
+            $existingExercise = $workoutPlan->exercises()->where('exercise_name', $exercise)->first();
+
+            if ($existingExercise) {
+                $existingExercise->update([
+                    'amount' => $exerciseData['amount'][$key],
+                    'note' => $exerciseData['note'][$key],
+                ]);
+            } else {
+                $workoutPlan->exercises()->create([
+                    'exercise_name' => $exercise,
+                    'amount' => $exerciseData['amount'][$key],
+                    'note' => $exerciseData['note'][$key],
+                ]);
+            }
         }
 
         return redirect()->route('welcome');

@@ -47,7 +47,9 @@ class WorkoutAssignmentController extends Controller
     public function progress($assignmentId)
     {
         $assignment = WorkoutAssignment::findOrFail($assignmentId);
-        $logs = WorkoutLog::where('assignment_id', $assignment->id)->get();
+        $logs = WorkoutLog::where('assignment_id', $assignment->id)
+            ->orderBy('updated_at', 'desc')
+            ->get();
 
         return view('workout_assignments.progress', compact('assignment', 'logs'));
     }

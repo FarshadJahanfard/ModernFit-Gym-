@@ -9,6 +9,32 @@
         <div class="row">
             <!-- Left part - Workout Exercises -->
             <div class="col-md-6">
+                <h3>Workout Plan Details</h3>
+                <p><strong>Start Date:</strong> {{ $assignment->start_date }}</p>
+                <p><strong>End Date:</strong> {{ $assignment->end_date }}</p>
+                <p><strong>Note:</strong> {{ $assignment->note }}</p>
+
+                @role("trainer")
+                <div class="d-flex justify-content-end align-items-center mt-3">
+                    <button class="btn btn-warning btn-sm mr-2" onclick="location.href='{{ route('workout_plans.edit', ['id' => $assignment->workoutPlan->id]) }}'">Edit</button>
+                    <form action="{{ route('workout_plans.destroy', ['id' => $assignment->workoutPlan->id]) }}" method="post" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this workout plan?')">Delete</button>
+                    </form>
+                </div>
+                @endrole
+                @role("admin")
+                <div class="d-flex justify-content-end align-items-center mt-3">
+                    <button class="btn btn-warning btn-sm mr-2" onclick="location.href='{{ route('workout_plans.edit', ['id' => $assignment->workoutPlan->id]) }}'">Edit</button>
+                    <form action="{{ route('workout_plans.destroy', ['id' => $assignment->workoutPlan->id]) }}" method="post" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this workout plan?')">Delete</button>
+                    </form>
+                </div>
+                @endrole
+
                 <h3>Workout Exercises</h3>
                 <table class="table table-bordered">
                     <thead>
@@ -83,7 +109,7 @@
                             <textarea class="form-control" id="note" name="note"></textarea>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-4">
                         <div class="col-md-12 text-end">
                             <button type="submit" class="btn btn-primary">Add Log</button>
                         </div>
