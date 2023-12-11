@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WorkoutAssignment;
 use Illuminate\Http\Request;
 use App\Models\WorkoutPlan;
 use App\Models\WorkoutExercise;
@@ -25,10 +26,13 @@ class WorkoutPlanController extends Controller
     public function show($id)
     {
         $workoutPlan = WorkoutPlan::findOrFail($id);
-        $assignedMembers = $workoutPlan->assignedMembers;
-//        dd($assignedMembers[0]->pivot->id);
 
-        return view('plans.show', compact('workoutPlan', 'assignedMembers'));
+        // Retrieve workout assignments with associated workout plan and member data
+        $assignments = WorkoutAssignment::where('workout_plan_id', $workoutPlan->id)
+            ->with('workoutPlan', 'member')
+            ->get();
+
+        return view('plans.show', compact('workoutPlan', 'assignments'));
     }
 
     public function store(Request $request)

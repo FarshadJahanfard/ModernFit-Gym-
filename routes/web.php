@@ -205,6 +205,9 @@ Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function (
 
     Route::get('/workout_assignments/create/{planId}', [WorkoutAssignmentController::class, 'create'])->name('workout_assignments.create');
     Route::post('/workout_assignments/store', [WorkoutAssignmentController::class, 'store'])->name('workout_assignments.store');
+    Route::resource('workout_assignments', WorkoutAssignmentController::class)->only([
+        'edit', 'update', 'destroy'
+    ]);
 });
 
 Route::group(['middleware' => ['auth', 'activated', 'assignmentAccess']], function () {

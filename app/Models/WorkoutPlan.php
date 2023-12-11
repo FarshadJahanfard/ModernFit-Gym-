@@ -43,4 +43,9 @@ class WorkoutPlan extends Model
         return $this->belongsToMany(User::class, 'workout_assignments', 'workout_plan_id', 'member_id')
             ->withPivot('start_date', 'end_date', 'note');
     }
+
+    public function assignments()
+    {
+        return $this->hasMany(WorkoutAssignment::class);
+    }
 }
