@@ -22,6 +22,14 @@ class WorkoutPlanController extends Controller
         return view('plans.index', compact('workoutPlans'));
     }
 
+    public function show($id)
+    {
+        $workoutPlan = WorkoutPlan::findOrFail($id);
+        $assignedMembers = $workoutPlan->assignedMembers;
+
+        return view('plans.show', compact('workoutPlan', 'assignedMembers'));
+    }
+
     public function store(Request $request)
     {
         $user = \Auth::user();

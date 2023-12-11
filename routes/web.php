@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\WorkoutAssignmentController;
+use App\Http\Controllers\WorkoutLogController;
 use App\Http\Controllers\WorkoutPlanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -91,6 +93,10 @@ Route::group(['middleware' => ['auth', 'activated', 'activity']], function () {
     // Activation Routes
     Route::get('/activation-required', ['uses' => 'App\Http\Controllers\Auth\ActivateController@activationRequired'])
         ->name('activation-required');
+
+    Route::get('/workout_progress', [WorkoutLogController::class, 'index'])->name('workout_progress.index');
+    Route::get('/workout_progress/create/{assignmentId}', [WorkoutLogController::class, 'create'])->name('workout_progress.create');
+    Route::post('/workout_progress/store/{assignmentId}', [WorkoutLogController::class, 'store'])->name('workout_progress.store');
 });
 
 // Registered, activated, and is current user routes.
@@ -186,9 +192,13 @@ Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function (
 
     Route::get('/workout_plans/create', [WorkoutPlanController::class, 'create'])->name('workout_plans.create');
     Route::post('/workout_plans/store', [WorkoutPlanController::class, 'store'])->name('workout_plans.store');
+    Route::get('/workout_plans/{id}', [WorkoutPlanController::class, 'show'])->name('workout_plans.show');
     Route::get('/workout_plans/{id}/edit', [WorkoutPlanController::class, 'edit'])->name('workout_plans.edit');
     Route::put('/workout_plans/{id}', [WorkoutPlanController::class, 'update'])->name('workout_plans.update');
     Route::delete('/workout_plans/{id}', [WorkoutPlanController::class, 'delete'])->name('workout_plans.destroy');
+
+    Route::get('/workout_assignments/create/{planId}', [WorkoutAssignmentController::class, 'create'])->name('workout_assignments.create');
+    Route::post('/workout_assignments/store', [WorkoutAssignmentController::class, 'store'])->name('workout_assignments.store');
 });
 
 Route::redirect('/php', '/phpinfo', 301);
