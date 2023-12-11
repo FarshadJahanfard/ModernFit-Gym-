@@ -48,6 +48,6 @@ class WorkoutAssignment extends Model
 
     public function workoutLogs()
     {
-        return $this->hasMany(WorkoutLog::class);
+        return $this->hasMany(WorkoutLog::class, 'assignment_id');
     }
 }

@@ -57,6 +57,6 @@ class WorkoutAssignmentController extends Controller
         $user = Auth::user();
         $assignments = $user->assignedWorkouts()->with('workoutPlan')->get();
 
-        return view('workout_assignments.user', compact('assignments'));
+        return view('workout_assignments.member', compact('assignments'));
     }
 }

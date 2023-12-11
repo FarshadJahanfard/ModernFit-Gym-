@@ -1,5 +1,5 @@
 @php
-    function calculateAmountDone($logs, $exerciseId, $amount)
+    function calculateAmountDone($logs, $exerciseId)
     {
         $exerciseLogs = $logs->where('exercise_id', $exerciseId);
 
@@ -12,8 +12,8 @@
 
     function calculateProgress($logs, $exerciseId, $amount)
     {
-        $totalSets = calculateAmountDone($logs, $exerciseId, $amount);
+        $totalSets = calculateAmountDone($logs, $exerciseId);
         $amountDone = $totalSets / $amount;
-        return $amountDone > 0 ? round($amountDone * 100, 2) : 0;
+        return $amountDone > 0 ? round($amountDone * 100) : 0;
     }
 @endphp
