@@ -11,7 +11,7 @@
             <ul>
                 @foreach($assignedMembers as $member)
                     <li>
-                        <a href="{{ route('workout_assignments.progress', ['assignmentId' => $member->pivot->id]) }}">
+                        <a href="{{ route('workout_assignments.progress', ['assignmentId' => 1]) }}">
                             {{ $member->name }}
                         </a>
                     </li>

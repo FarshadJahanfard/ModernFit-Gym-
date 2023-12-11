@@ -4,6 +4,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\WorkoutAssignmentController;
 use App\Http\Controllers\WorkoutLogController;
 use App\Http\Controllers\WorkoutPlanController;
+use App\Http\Middleware\CheckAssignmentAccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -144,6 +145,8 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']],
 
     // Route to buy memberships
     Route::post('/memberships/purchase/{membership}', [MembershipController::class, 'purchase'])->name('memberships.purchase');
+
+    Route::delete('/workout_logs/{id}', [WorkoutLogController::class, 'delete'])->name('workout_logs.destroy');
 });
 
 // Registered, activated, and is admin routes.
@@ -199,6 +202,11 @@ Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function (
 
     Route::get('/workout_assignments/create/{planId}', [WorkoutAssignmentController::class, 'create'])->name('workout_assignments.create');
     Route::post('/workout_assignments/store', [WorkoutAssignmentController::class, 'store'])->name('workout_assignments.store');
+});
+
+Route::group(['middleware' => ['auth', 'activated', 'assignmentAccess']], function () {
+    Route::get('/progress/{assignmentId}', [WorkoutAssignmentController::class, 'progress'])->name('workout_assignments.progress');
+    Route::post('/store-workout-log/{assignmentId}', [WorkoutLogController::class, 'store'])->name('workout_logs.store');
 });
 
 Route::redirect('/php', '/phpinfo', 301);

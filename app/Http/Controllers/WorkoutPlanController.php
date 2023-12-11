@@ -26,6 +26,7 @@ class WorkoutPlanController extends Controller
     {
         $workoutPlan = WorkoutPlan::findOrFail($id);
         $assignedMembers = $workoutPlan->assignedMembers;
+//        dd($assignedMembers[0]->pivot->id);
 
         return view('plans.show', compact('workoutPlan', 'assignedMembers'));
     }

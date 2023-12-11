@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WorkoutLog;
 use Illuminate\Http\Request;
 use App\Models\WorkoutAssignment;
 use App\Models\User;
@@ -41,5 +42,13 @@ class WorkoutAssignmentController extends Controller
 
         return redirect()->route('workout_plans', ['username' => $user->name])
             ->with('success', 'Workout plan assigned successfully.');
+    }
+
+    public function progress($assignmentId)
+    {
+        $assignment = WorkoutAssignment::findOrFail($assignmentId);
+        $logs = WorkoutLog::where('assignment_id', $assignment->id)->get();
+
+        return view('workout_assignments.progress', compact('assignment', 'logs'));
     }
 }
