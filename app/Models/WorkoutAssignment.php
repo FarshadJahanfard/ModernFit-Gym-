@@ -45,4 +45,9 @@ class WorkoutAssignment extends Model
     {
         return $this->belongsTo(WorkoutPlan::class);
     }
+
+    public function workoutLogs()
+    {
+        return $this->hasMany(WorkoutLog::class);
+    }
 }

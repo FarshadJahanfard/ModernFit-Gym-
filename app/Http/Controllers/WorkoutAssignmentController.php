@@ -51,4 +51,12 @@ class WorkoutAssignmentController extends Controller
 
         return view('workout_assignments.progress', compact('assignment', 'logs'));
     }
+
+    public function userAssignments()
+    {
+        $user = Auth::user();
+        $assignments = $user->assignedWorkouts()->with('workoutPlan')->get();
+
+        return view('workout_assignments.user', compact('assignments'));
+    }
 }

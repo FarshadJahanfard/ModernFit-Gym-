@@ -94,6 +94,9 @@
                                 Plans
                             </a>
                             @endrole
+                            <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/assignments') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/assignments') }}">
+                                Workout Assignments
+                            </a>
                             <a class="dropdown-item {{ Request::is('profile/' . Auth::user()->name . '/edit') ? 'active' : null }}" href="{{ url('/profile/' . Auth::user()->name . '/edit') }}">
                                 Settings
                             </a>

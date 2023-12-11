@@ -146,6 +146,9 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']],
     // Route to buy memberships
     Route::post('/memberships/purchase/{membership}', [MembershipController::class, 'purchase'])->name('memberships.purchase');
 
+    // Route to show user plans
+    Route::get('/profile/{username}/assignments', [WorkoutAssignmentController::class, 'userAssignments'])->name('workout_assignments');
+
     Route::delete('/workout_logs/{id}', [WorkoutLogController::class, 'delete'])->name('workout_logs.destroy');
 });
 
