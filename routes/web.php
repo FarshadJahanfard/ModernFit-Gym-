@@ -23,7 +23,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/dashboard/remove/{id}', [DashboardController::class, 'removeFood'])->name('removeFood');
+    Route::post('/remove-food/{id}', [DashboardController::class, 'removeFood'])->name('removeFood');
 });
 // For demonstration purposes
 Route::post('/detach-foods', [DashboardController::class, 'detachFoods'])->name('detach-foods');
