@@ -1,119 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Information</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    {{-- @foreach($foods as $food)
-    @php
-    $runningTotal += $food->calories;
-    @endphp
-    @endforeach --}}
-    {{-- @php
-    $dailyCalorieCount = 2000;
-    $runningTotal = 0;
-    @endphp
+@section('content')
+
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>
+
+{{-- W3schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_like_dislike --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+<!-- Display Community Foods -->
+<div class="food-split left">
+    <h2>Community Foods</h2>
+    <div class="foods-list">
+        @forelse($communityFoods as $food)
+            <div class="food-tab">
+                <h2>{{ $food->name }}</h2>
+                <p>Quantity: {{ $food->quantity }}</p>
+                <p>Calories: {{ $food->calories }}</p>
+                <p>Description: {{ $food->description }}</p>
+                @if($food->vegetarian)
+                    <p>Vegetarian Option</p>
+                @endif
+                <!-- Other food details... -->
+                <!-- Form to add food to user's list -->
+                <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
+                    @csrf
+                    <button type="submit">Add to Daily Calories</button>
+                </form>
+                <div class="likes-container">
+                    <!-- Like button -->
+                    <form action="{{ route('likeFood', ['id' => $food->id]) }}" method="post">
+                        @csrf
+                        <button id="like" class="fa fa-thumbs-up" type="submit"></button>
+                    </form>
+                    <p>Likes: {{ $food->likes }}</p>
+
+                    <!-- Dislike button -->
+                    <form action="{{ route('dislikeFood', ['id' => $food->id]) }}" method="post">
+                        @csrf
+                        <button id="dislike" class="fa fa-thumbs-down" type="submit"><div class="dislike-image"></div></button>
+                    </form>
+                    <p>Dislikes: {{ $food->dislikes }}</p>
+                </div>
+            </div>
+        @empty
+            <p>No community foods available.</p>
+        @endforelse
+    </div>
+</div>
+
+
+<div class="food-split right">
+    <!-- Display Official Foods -->
+    <h2>Official Foods</h2>
+    <div class="foods-list">
+        @forelse($officialFoods as $food)
+            <!-- Display Official Food Details -->   
+            <div class="food-tab">
+                <h2>{{ $food->name }}</h2>
+                <p>Quantity: {{ $food->quantity }}</p>
+                <p>Calories: {{ $food->calories }}</p>
+                <p>Description: {{ $food->description }}</p>
+                @if($food->vegetarian)
+                    <p>Vegetarian Option</p>
+                @endif
+                <!-- Form to add food to user's list -->
+                <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
+                    @csrf
+                    <button type="submit">Add to Daily Calories</button>
+                </form>
+            </div>
     
-    @if($runningTotal > $dailyCalorieCount)
-    You have exceeded your daily calorie count.
-    @else
-    Remaining Calorie Allowance: {{ $dailyCalorieCount - $runningTotal }}
-    @endif
+        @empty
+            <p>No official foods available.</p>
+        @endforelse
+    </div>
+</div>
 
-<h1>Nutrition Information</h1>
-<h2>Total Calorie Allowance: {{ $dailyCalorieCount }}</h2>
-
-@if(isset($food))
-    <h2>{{ $food->name }}</h2>
-    <p>Quantity: {{ $food->quantity }}</p>
-    <p>Calories: {{ $food->calories }}</p>
-    <p>Description: {{ $food->description }}</p>
-    @if($food->vegetarian)
-        <p>Vegetarian Option</p>
-    @endif
-@else
-    <p>No nutrition information available.</p>
-@endif
-
-</body>
-</html> --}}
-
-{{-- @php
-    $dailyCalorieCount = 2000;
-    $runningTotal = 0;
-@endphp
-
-@if(isset($food))
-    @php
-        // Calculate running total of calories
-        $runningTotal += $food->calories;
-    @endphp
-
-    <h2>{{ $food->name }}</h2>
-    <p>Quantity: {{ $food->quantity }}</p>
-    <p>Calories: {{ $food->calories }}</p>
-    <p>Description: {{ $food->description }}</p>
-    @if($food->vegetarian)
-        <p>Vegetarian Option</p>
-    @endif
-@else
-    <p>No nutrition information available.</p>
-@endif
-
-<h1>Nutrition Information</h1>
-<h2>Total Calorie Allowance: {{ $dailyCalorieCount }}</h2>
-
-@if($runningTotal > $dailyCalorieCount)
-    <p>You have exceeded your daily calorie count.</p>
-@else
-    <p>Remaining Calorie Allowance: {{ $dailyCalorieCount - $runningTotal }}</p>
-@endif
-
-</body>
-</html> --}}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Information</title>
-</head>
-<body>
-
-@php
-    $dailyCalorieCount = 2000;
-@endphp
-
-<h1>Nutrition Information</h1>
-<h2>Total Calorie Allowance: {{ $dailyCalorieCount }}</h2>
-@if($dailyCalorieCount < $runningTotal)
-    <h3>You have exceeded your daily calorie count!</h3>
-@else
-<p>Remaining Calorie Allowance: {{ $dailyCalorieCount - $runningTotal }}</p>
-@endif
-<h3>Testing running total: {{ $runningTotal }}</h3>
-
-@forelse($foods as $food)
-    <h2>{{ $food->name }}</h2>
-    <p>Quantity: {{ $food->quantity }}</p>
-    <p>Calories: {{ $food->calories }}</p>
-    <p>Description: {{ $food->description }}</p>
-    @if($food->vegetarian)
-        <p>Vegetarian Option</p>
-    @endif
-
-    @php
-        // Calculate running total of calories
-        $runningTotal += $food->calories;
-    @endphp
-
-@empty
-    <p>No nutrition information available.</p>
-@endforelse
-
-</body>
-</html>
+@endsection

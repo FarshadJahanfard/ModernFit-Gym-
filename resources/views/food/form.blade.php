@@ -1,32 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Form</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<form action="{{ url('/food/process') }}" method="post">
-    @csrf
+@section('content')
 
-    <label for="name">Food Name:</label>
-    <input type="text" id="name" name="name" required><br>
+<h1>Create Community food</h1>
 
-    <label for="quantity">Quantity:</label>
-    <input type="number" id="quantity" name="quantity" required><br>
+<div class="food-form-container">
+    <form class="food-form" action="{{ url('/food/process') }}" method="post">
+        @csrf
+    
+        <div class="food-form-section">
+            <label for="name">Food Name:</label>
+            <input type="text" id="name" name="name" required><br>
+        </div>
+    
+        {{-- <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required><br> --}}
 
-    <label for="calories">Calories:</label>
-    <input type="number" id="calories" name="calories" required><br>
+        <div class="food-form-section">
+            <label for="calories">Calories:</label>
+            <input type="number" min="1" value="100" id="calories" name="calories" required><br>
+        </div>
 
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea><br>
+        <div class="food-form-section">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
+        </div>
 
-    <label for="vegetarian_option">Vegetarian Option:</label>
-    <input type="checkbox" id="vegetarian_option" name="vegetarian_option"><br>
+        <div class="food-form-section">
+            <label for="vegetarian_option">Vegetarian Option:</label>
+            <input type="checkbox" id="vegetarian_option" name="vegetarian_option"><br>
+        </div>
+    
+        {{-- <label for="official_option">Official Option:</label>
+        <input type="checkbox" id="official_option" name="official_option"><br> --}}
+    
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
-    <input type="submit" value="Submit">
-</form>
-
-</body>
-</html>
+@endsection

@@ -9,7 +9,8 @@ class Food extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'quantity', 'calories', 'description', 'vegetarian'];
+    // protected $fillable = ['name', 'calories', 'description', 'vegetarian', 'official'];
+    protected $fillable = ['name', 'calories', 'description', 'vegetarian', 'official', 'likes', 'dislikes'];
     protected $table = 'foods';
 
     /**
@@ -21,7 +22,7 @@ class Food extends Model
     {
         return json_encode([
             'name' => $this->name,
-            'quantity' => $this->quantity,
+            // 'quantity' => $this->quantity,
             'calories' => $this->calories,
             'description' => $this->description,
             'vegetarian' => $this->vegetarian,
@@ -40,10 +41,15 @@ class Food extends Model
 
         return new self([
             'name' => $data['name'],
-            'quantity' => $data['quantity'],
+            // 'quantity' => $data['quantity'],
             'calories' => $data['calories'],
             'description' => $data['description'],
             'vegetarian' => $data['vegetarian'],
         ]);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 }

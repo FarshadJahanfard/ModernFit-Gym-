@@ -27,6 +27,81 @@
     background-color: lightblue;
 }
 
+.food-form{
+    width: 40%;
+    background-color: #fff;
+    padding: 1em;
+}
+
+.food-form-section{
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+
+}
+
+.food-form-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.foods-list{
+    overflow-y: scroll;
+    /* overflow: hidden; */
+    height: 100%;
+    margin: 1rem;
+}
+
+.food-split {
+    height: 80%;
+    width: 50%;
+    position: absolute;
+    padding-top: 20px;
+    /* margin-bottom: 4rem; */
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    /* background-color: #111; */
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    /* background-color: red; */
+  }
+
+  .likes-container{
+    display: flex;
+    margin: 1rem;
+    margin-left: 0px;
+  }
+
+  .likes-container p{
+    margin: 10px;
+  }
+
+  #like{
+    background-color: rgb(0, 119, 255);
+  }
+
+  #dislike{
+    background-color: rgb(218, 48, 48);
+  }
+
+  /* W3Schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_like_dislike */
+  .fa {
+    font-size: 50px;
+    cursor: pointer;
+    /* user-select: none; */
+  }
+  
+  .fa:hover {
+    color: darkblue;
+  }
+
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600&display=swap');
 
 .button-align{
@@ -433,4 +508,14 @@ button[type="submit"]:hover {
 
 .form-group:not(:last-child) {
     margin-bottom: 15px;
+}
+
+.food-tab{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgb(255, 255, 255);
 }

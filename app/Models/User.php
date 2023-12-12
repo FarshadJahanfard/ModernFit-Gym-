@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use jeremykenedy\LaravelRoles\Traits\HasRoleAndPermission;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, HasRoleAndPermission, Notifiable, SoftDeletes;
@@ -193,5 +194,25 @@ class User extends Authenticatable
     public function removeProfile(Profile $profile)
     {
         return $this->profiles()->detach($profile);
+    }
+
+    public function foods()
+    {
+        return $this->belongsToMany(Food::class)->withTimestamps();
+    }
+
+    public function classes()
+    {
+        return $this->belongsToMany(OfferedClass::class, 'classes_user', 'user_id', 'class_id');
+    }
+
+    public function likedFoods()
+    {
+        return $this->belongsToMany(Food::class, 'user_likes')->withTimestamps();
+    }
+
+    public function dislikedFoods()
+    {
+        return $this->belongsToMany(Food::class, 'user_dislikes')->withTimestamps();
     }
 }
