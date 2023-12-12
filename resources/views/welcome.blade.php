@@ -3,21 +3,7 @@
 @section('content')
 
 <div class="image-grid" id="main-content">
-   <img src="{{ asset('images/gym1.svg') }}" 
-   ="flex-item" alt="A man is lifting a weight.">
-   <img src="{{ asset('images/gym2.svg') }}" class="flex-item" alt="A group of individuals engaged in a workout session.">
-   <img src="{{ asset('images/gym3.svg') }}" class="flex-item" alt="A man performing push-ups.">
-   <img src="{{ asset('images/gym4.svg') }}" class="flex-item" alt="Two individuals engaged in boxing practice.">
-   <img src="{{ asset('images/gym5.svg') }}" class="flex-item" alt="A group of people exercising together.">
-   <img src="{{ asset('images/gym6.svg') }}" class="flex-item" alt="A man performing a chest press exercise.">
-   <div class="button-align">
-    <form action="{{ route('classes') }}" method="get">
-        <button type="submit" class="view-class-btn">View Classes</button>
-    </form>
-   {{-- <a href="{{ route('classes') }}"> View Classes </a> --}}
 
-   </div>
-</div>
 
 <div class="split">
   <div class="split-left">
