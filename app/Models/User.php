@@ -194,22 +194,4 @@ class User extends Authenticatable
     {
         return $this->profiles()->detach($profile);
     }
-
-    /**
-     * Get the members assigned to the trainer.
-     */
-    public function getMembers()
-    {
-        return User::whereHas('assignedWorkouts', function ($query) {
-            $query->where('user_id', $this->id);
-        })->get();
-    }
-
-    /**
-     * Get the workout assignments for the user.
-     */
-    public function assignedWorkouts()
-    {
-        return $this->hasMany(WorkoutAssignment::class, 'member_id');
-    }
 }
