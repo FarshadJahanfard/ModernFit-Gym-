@@ -2,13 +2,15 @@
 
 @extends('layouts.app')
 
+@include('workout_assignments.functions')
+
 @section('content')
     <div class="container mt-4">
         <h2>Workout Plan: {{ $workoutPlan->name }}</h2>
 
         <div class="row">
             <!-- Left Column - Workout Plan Info -->
-            <div class="col-md-6">
+            <div class="col-md-4"> <!-- Adjusted to 40% -->
                 <p><strong>Workout Plan Details:</strong></p>
                 <!-- Add other workout plan details as needed -->
                 <ul>
@@ -19,15 +21,23 @@
             </div>
 
             <!-- Right Column - Assigned Members -->
-            <div class="col-md-6">
+            <div class="col-md-8"> <!-- Adjusted to take the remaining 60% -->
                 <p><strong>Assigned Members:</strong></p>
                 @if(count($assignments) > 0)
                     <ul class="list-group">
                         @foreach($assignments as $assignment)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a href="{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}">
-                                    {{ $assignment->member->name }}
-                                </a>
+                                <div class="d-flex">
+                                    <a href="{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}">
+                                        {{ $assignment->member->name }}
+                                    </a>
+                                    @php
+                                        $progressBarWidth = getProgressBarWidth($assignment);
+                                    @endphp
+                                    <div class="progress ml-3 mt-1" style="width: 300px;">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ $progressBarWidth }}%;" aria-valuenow="{{ $progressBarWidth }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
                                 <div class="float-right">
                                     <button class="btn btn-info btn-sm" onclick="location.href='{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}'">View Progress</button>
 

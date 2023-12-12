@@ -16,4 +16,25 @@
         $amountDone = $totalSets / $amount;
         return $amountDone > 0 ? round($amountDone * 100) : 0;
     }
+    function getProgressBarWidth($assignment)
+    {
+        $logs = $assignment->workoutLogs;
+        $totalProgress = 0;
+
+        // Filter logs to exclude those with null exercise values
+        $logs = $logs->filter(function ($log) {
+            return $log->exercise !== null;
+        });
+
+        foreach ($logs as $log) {
+            $progress = calculateProgress($logs, $log->exercise->id, $log->exercise->amount);
+            $totalProgress += $progress;
+        }
+
+        $averageProgress = count($logs) > 0
+            ? ($totalProgress / count($logs))
+            : 0;
+
+        return round($averageProgress);
+    }
 @endphp

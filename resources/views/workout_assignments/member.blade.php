@@ -2,30 +2,6 @@
 
 @include('workout_assignments.functions')
 
-@php
-    function getProgressBarWidth($assignment)
-    {
-        $logs = $assignment->workoutLogs;
-        $totalProgress = 0;
-
-        // Filter logs to exclude those with null exercise values
-        $logs = $logs->filter(function ($log) {
-            return $log->exercise !== null;
-        });
-
-        foreach ($logs as $log) {
-            $progress = calculateProgress($logs, $log->exercise->id, $log->exercise->amount);
-            $totalProgress += $progress;
-        }
-
-        $averageProgress = count($logs) > 0
-            ? ($totalProgress / count($logs))
-            : 0;
-
-        return round($averageProgress);
-    }
-@endphp
-
 @section('content')
     <div class="container mt-4">
         <h2>Your Workout Assignments</h2>
