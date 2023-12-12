@@ -77,17 +77,26 @@ class WorkoutPlanController extends Controller
             'note.*' => 'nullable|string',
         ]);
 
+        // Get IDs of existing exercises
+        $existingExerciseIds = $workoutPlan->exercises->pluck('id')->toArray();
+
         // Loop through provided exercises
         foreach ($exerciseData['exercise_name'] as $key => $exercise) {
-            // Check if the exercise already exists, update it; otherwise, create a new one
-            $existingExercise = $workoutPlan->exercises()->where('exercise_name', $exercise)->first();
+            $existingExercise = $workoutPlan->exercises()
+                ->where('exercise_name', $exercise)
+                ->first();
 
             if ($existingExercise) {
+                // Update the existing exercise
                 $existingExercise->update([
                     'amount' => $exerciseData['amount'][$key],
                     'note' => $exerciseData['note'][$key],
                 ]);
+
+                // Remove the ID from the list of existing exercise IDs
+                unset($existingExerciseIds[array_search($existingExercise->id, $existingExerciseIds)]);
             } else {
+                // Create a new exercise
                 $workoutPlan->exercises()->create([
                     'exercise_name' => $exercise,
                     'amount' => $exerciseData['amount'][$key],
@@ -96,8 +105,13 @@ class WorkoutPlanController extends Controller
             }
         }
 
-        return redirect()->route('welcome');
+        // Delete exercises that were not updated
+        $workoutPlan->exercises()->whereIn('id', $existingExerciseIds)->delete();
+
+        return redirect()->route('workout_plans', ['username' => $user->name])
+            ->with('success', 'Workout plan updated successfully.');
     }
+
 
     public function edit($id)
     {

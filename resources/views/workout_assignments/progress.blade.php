@@ -24,16 +24,6 @@
                     </form>
                 </div>
                 @endrole
-                @role("admin")
-                <div class="d-flex justify-content-end align-items-center mt-3">
-                    <button class="btn btn-warning btn-sm mr-2" onclick="location.href='{{ route('workout_plans.edit', ['id' => $assignment->workoutPlan->id]) }}'">Edit</button>
-                    <form action="{{ route('workout_plans.destroy', ['id' => $assignment->workoutPlan->id]) }}" method="post" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this workout plan?')">Delete</button>
-                    </form>
-                </div>
-                @endrole
 
                 <h3>Workout Exercises</h3>
                 <table class="table table-bordered">
@@ -49,7 +39,7 @@
                     <tbody>
                     @foreach($assignment->workoutPlan->exercises as $exercise)
                         @php
-                            $amount = calculateAmountDone($logs, $exercise->id, $exercise->amount);
+                            $amount = calculateAmountDone($logs, $exercise->id);
                             $progress = calculateProgress($logs, $exercise->id, $exercise->amount);
                             $progressClass = $progress >= 100 ? 'progress-complete' : '';
                         @endphp
@@ -129,7 +119,7 @@
                     <tbody>
                     @foreach($logs as $log)
                         <tr>
-                            <td>{{ $log->exercise->exercise_name }}</td>
+                            <td>{{ $log->exerciseTrashed->exercise_name }}</td>
                             <td>{{ $log->sets }}</td>
                             <td>{{ $log->note }}</td>
                             <td>{{ $log->created_at->format('Y-m-d') }}</td>

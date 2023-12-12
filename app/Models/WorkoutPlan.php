@@ -35,7 +35,7 @@ class WorkoutPlan extends Model
 
     public function exercises()
     {
-        return $this->hasMany(WorkoutExercise::class);
+        return $this->hasMany(WorkoutExercise::class)->withoutTrashed();
     }
 
     public function assignedMembers()

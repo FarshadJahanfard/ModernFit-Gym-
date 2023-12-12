@@ -15,11 +15,14 @@ class CheckAssignmentAccess
 
         $user = Auth::user();
 
-        if ($user->id == $assignment->member_id || $user->id == $assignment->workoutPlan->user_id) {
+        if ($user->id == $assignment->member_id ||
+            $user->id == $assignment->workoutPlan->user_id ||
+            $user->hasRole('admin')
+        ) {
             return $next($request);
         }
 
-        abort(403, 'Unauthorized action.');
+        abort(403, 'Forbidden action');
     }
 }
 
