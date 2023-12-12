@@ -42,6 +42,10 @@ class WorkoutLog extends Model
 
     public function exercise()
     {
-        return $this->belongsTo(WorkoutExercise::class, 'exercise_id');
+        return $this->belongsTo(WorkoutExercise::class, 'exercise_id')->withoutTrashed();
+    }
+    public function exerciseTrashed()
+    {
+        return $this->belongsTo(WorkoutExercise::class, 'exercise_id')->withTrashed();
     }
 }

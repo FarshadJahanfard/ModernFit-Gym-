@@ -4,6 +4,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\WorkoutAssignmentController;
 use App\Http\Controllers\WorkoutLogController;
 use App\Http\Controllers\WorkoutPlanController;
+use App\Http\Middleware\CheckAssignmentAccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -85,6 +86,7 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     // Route for user to reactivate their user deleted account.
     Route::get('/re-activate/{token}', ['as' => 'user.reactivate', 'uses' => 'App\Http\Controllers\RestoreUserController@userReActivate']);
 
+    // TODO: add link on navbar
     // Route for buying day passes.
     Route::get('/daypass', 'App\Http\Controllers\DayPassController@create')->name('daypass.create');
     Route::post('/daypass', 'App\Http\Controllers\DayPassController@store')->name('daypass.store');
@@ -169,6 +171,11 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']],
 
     // Route to buy memberships
     Route::post('/memberships/purchase/{membership}', [MembershipController::class, 'purchase'])->name('memberships.purchase');
+
+    // Route to show user plans
+    Route::get('/profile/{username}/assignments', [WorkoutAssignmentController::class, 'userAssignments'])->name('workout_assignments');
+
+    Route::delete('/workout_logs/{id}', [WorkoutLogController::class, 'delete'])->name('workout_logs.destroy');
 });
 
 // Registered, activated, and is admin routes.
@@ -224,6 +231,14 @@ Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function (
 
     Route::get('/workout_assignments/create/{planId}', [WorkoutAssignmentController::class, 'create'])->name('workout_assignments.create');
     Route::post('/workout_assignments/store', [WorkoutAssignmentController::class, 'store'])->name('workout_assignments.store');
+    Route::resource('workout_assignments', WorkoutAssignmentController::class)->only([
+        'edit', 'update', 'destroy'
+    ]);
+});
+
+Route::group(['middleware' => ['auth', 'activated', 'assignmentAccess']], function () {
+    Route::get('/progress/{assignmentId}', [WorkoutAssignmentController::class, 'progress'])->name('workout_assignments.progress');
+    Route::post('/store-workout-log/{assignmentId}', [WorkoutLogController::class, 'store'])->name('workout_logs.store');
 });
 
 Route::redirect('/php', '/phpinfo', 301);
