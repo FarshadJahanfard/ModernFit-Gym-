@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="image-grid" id="main-content">
-
 <div class="split">
   <div class="split-left">
     <h1 class="join-now">join now from £21.99 a month</h1>
