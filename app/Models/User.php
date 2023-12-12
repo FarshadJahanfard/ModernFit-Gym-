@@ -195,10 +195,6 @@ class User extends Authenticatable
         return $this->profiles()->detach($profile);
     }
 
-    public function workoutPlans() {
-        return $this->hasMany(WorkoutPlan::class);
-    }
-
     /**
      * Get the members assigned to the trainer.
      */
