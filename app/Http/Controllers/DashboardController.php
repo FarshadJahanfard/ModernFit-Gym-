@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
-
+use App\Models\OfferedClass;
 use App\Models\Food;
 
 class DashboardController extends Controller
@@ -58,7 +58,7 @@ class DashboardController extends Controller
         $user = Auth::user();
 
         // Associate the food item with the user through the link table
-        $user->foods()->detach($class->id);
+        $user->classes()->detach($class->id);
 
         // Redirect back to the nutrition page
         return redirect()->route('dashboard')->with('success', 'You have successfully unregistered for this class.');

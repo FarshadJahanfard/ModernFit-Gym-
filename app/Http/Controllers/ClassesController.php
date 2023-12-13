@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\OfferedClass;
+use App\Models\Food;
 
 class ClassesController extends Controller
 {
@@ -39,22 +40,22 @@ class ClassesController extends Controller
     public function processForm(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|text',
-            'date' => 'required|date',
-            'time' => 'time'
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'date' => 'date',
+            'time' => 'date_format:H:i'
         ]);
 
         // Create a new Food instance
-        $food = new Food([
-            'name' => $validatedData['name'],
+        $class = new OfferedClass([
+            'title' => $validatedData['title'],
             'description' => $validatedData['description'],
-            'date' => $validatedData('date'),
-            'time' => $validatedData('official_option')
+            'date' => $validatedData['date'],
+            'time' => $validatedData['time']
         ]);
 
         // Save the food item to the database
-        $food->save();
+        $class->save();
 
         return "Data stored successfully!";
     }

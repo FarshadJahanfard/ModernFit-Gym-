@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('workout_assignments.functions')
+@include('assignments.functions')
 
 @section('content')
     <div class="container mt-4">
@@ -18,7 +18,8 @@
                             @include('partials.progress-bar', ['assignment' => $assignment])
                         </div>
                         <span class="badge badge-primary badge-pill">{{ $progressBarWidth }}%</span>
-                        <a href="{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}" class="btn btn-info btn-sm">View</a>
+                        <a href="{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}"
+                           class="btn btn-info btn-sm">View</a>
                     </li>
                 @endforeach
             </ul>

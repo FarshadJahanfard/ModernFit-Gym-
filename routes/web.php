@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DietAssignmentController;
+use App\Http\Controllers\DietPlanController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\WorkoutAssignmentController;
 use App\Http\Controllers\WorkoutLogController;
@@ -37,7 +39,7 @@ use App\Http\Controllers\ClassesController;
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::post('/classes/add/{id}', [ClassesController::class, 'addClass'])->name('addClass');
-Route::post('/dashboard/remove/{id}', [ClassesController::class, 'removeClass'])->name('removeClass');
+Route::post('/dashboard/remove/{id}', [DashboardController::class, 'removeClass'])->name('removeClass');
 
 Route::get('/classes/form', [ClassesController::class, 'showForm']);
 Route::post('/classes/process', [ClassesController::class, 'processForm']);
@@ -176,7 +178,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']],
     Route::post('/memberships/purchase/{membership}', [MembershipController::class, 'purchase'])->name('memberships.purchase');
 
     // Route to show user plans
-    Route::get('/profile/{username}/assignments', [WorkoutAssignmentController::class, 'userAssignments'])->name('workout_assignments');
+    Route::get('/profile/{username}/assignments', [WorkoutAssignmentController::class, 'userAssignments'])->name('assignments');
 
     Route::delete('/workout_logs/{id}', [WorkoutLogController::class, 'delete'])->name('workout_logs.destroy');
 });
@@ -223,7 +225,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin']], function () 
 
 // Registered, activated, and is trainer routes.
 Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function () {
-    Route::get('/profile/{username}/plans', [WorkoutPlanController::class, 'index'])->name('workout_plans');
+    Route::get('/profile/{username}/plans', [WorkoutPlanController::class, 'index'])->name('plans');
 
     Route::get('/workout_plans/create', [WorkoutPlanController::class, 'create'])->name('workout_plans.create');
     Route::post('/workout_plans/store', [WorkoutPlanController::class, 'store'])->name('workout_plans.store');
@@ -232,16 +234,29 @@ Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function (
     Route::put('/workout_plans/{id}', [WorkoutPlanController::class, 'update'])->name('workout_plans.update');
     Route::delete('/workout_plans/{id}', [WorkoutPlanController::class, 'delete'])->name('workout_plans.destroy');
 
+    Route::get('/diet_plans/{id}', [DietPlanController::class, 'show'])->name('diet_plans.show');
+    Route::post('/diet_plans/store', [DietPlanController::class, 'store'])->name('diet_plans.store');
+    Route::put('/diet_plans/{id}', [DietPlanController::class, 'update'])->name('diet_plans.update');
+    Route::delete('/diet_plans/{id}', [DietPlanController::class, 'delete'])->name('diet_plans.destroy');
+
     Route::get('/workout_assignments/create/{planId}', [WorkoutAssignmentController::class, 'create'])->name('workout_assignments.create');
     Route::post('/workout_assignments/store', [WorkoutAssignmentController::class, 'store'])->name('workout_assignments.store');
     Route::resource('workout_assignments', WorkoutAssignmentController::class)->only([
         'edit', 'update', 'destroy'
     ]);
+
+    Route::get('/diet_assignments/create/{planId}', [DietAssignmentController::class, 'create'])->name('diet_assignments.create');
+    Route::post('/diet_assignments/store', [DietAssignmentController::class, 'store'])->name('diet_assignments.store');
+    Route::resource('diet_assignments', DietAssignmentController::class)->only([
+        'edit', 'update', 'destroy'
+    ]);
 });
 
 Route::group(['middleware' => ['auth', 'activated', 'assignmentAccess']], function () {
-    Route::get('/progress/{assignmentId}', [WorkoutAssignmentController::class, 'progress'])->name('workout_assignments.progress');
+    Route::get('/workout/{assignmentId}', [WorkoutAssignmentController::class, 'progress'])->name('workout_assignments.progress');
     Route::post('/store-workout-log/{assignmentId}', [WorkoutLogController::class, 'store'])->name('workout_logs.store');
+
+    Route::get('/diet/{assignmentId}', [DietAssignmentController::class, 'progress'])->name('diet_assignments.progress');
 });
 
 Route::redirect('/php', '/phpinfo', 301);
