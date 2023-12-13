@@ -64,6 +64,9 @@
                     <a class="nav-link" href='{{ url('/memberships') }}'>Memberships</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href='{{ url('/daypass') }}'>Daypass</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href='{{ url('/dashboard') }}'>Dashboard</a>
                 </li>
                 <li class="nav-item">

@@ -86,7 +86,6 @@ Route::group(['middleware' => ['web', 'activity']], function () {
     // Route for user to reactivate their user deleted account.
     Route::get('/re-activate/{token}', ['as' => 'user.reactivate', 'uses' => 'App\Http\Controllers\RestoreUserController@userReActivate']);
 
-    // TODO: add link on navbar
     // Route for buying day passes.
     Route::get('/daypass', 'App\Http\Controllers\DayPassController@create')->name('daypass.create');
     Route::post('/daypass', 'App\Http\Controllers\DayPassController@store')->name('daypass.store');
