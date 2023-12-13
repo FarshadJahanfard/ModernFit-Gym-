@@ -11,6 +11,10 @@
 {{-- W3schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_like_dislike --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
+<form action="{{ url('/food/form') }}" method="get">
+    <button type="submit" class="view-class-btn">Create Food</button>
+ </form>
+
 <!-- Display Community Foods -->
 <div class="food-split left">
     <h2>Community Foods</h2>
