@@ -509,3 +509,13 @@ button[type="submit"]:hover {
 .form-group:not(:last-child) {
     margin-bottom: 15px;
 }
+
+.food-tab{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgb(255, 255, 255);
+}
