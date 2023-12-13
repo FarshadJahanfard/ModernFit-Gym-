@@ -509,3 +509,42 @@ button[type="submit"]:hover {
 .form-group:not(:last-child) {
     margin-bottom: 15px;
 }
+
+.services{
+    height: 400px;
+    width: 100%;
+    display: flex;
+
+}
+
+
+.carousel-inner img {
+    width: 100%;
+}
+
+
+#demo.carousel {
+    height: 500px;
+}
+
+.carousel-inner img {
+    height: 525px;
+    object-fit: fill; 
+    
+}
+
+.services {
+    height: 400px;
+    width: 100%;
+    display: flex;
+}
+
+
+.services-h{
+    background: linear-gradient(41deg, rgba(26,209,123,1) 11%, rgba(63,63,79,1) 47%, rgba(26,28,28,1) 100%);
+    margin-bottom: 0;
+    color: #fff;
+    text-align: center;
+    height: 60px;
+    padding: 20px;
+}
