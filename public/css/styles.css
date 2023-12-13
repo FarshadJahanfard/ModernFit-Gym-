@@ -432,7 +432,6 @@ button[type="submit"]:hover {
     text-transform: uppercase;
 }
 
-
 .form-group:not(:last-child) {
     margin-bottom: 15px;
 }
