@@ -10,6 +10,7 @@
         <meta name="author" content="Jeremy Kenedy">
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="preconnect" href="https://fonts.bunny.net">
+        <link rel="icon" type="image/x-icon" href="/images/Logo2.ico">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
