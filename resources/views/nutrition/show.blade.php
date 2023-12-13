@@ -4,7 +4,17 @@
 
 <style>
     body {
-        overflow: hidden;
+         overflow: hidden; 
+    }
+    p{
+        color: white;
+        text-shadow: 2px 2px #121111;
+        text-transform:unset;
+    }
+    h2{
+        text-align: center;
+        text-shadow: 2px 2px #121111;
+        text-transform: uppercase;
     }
 </style>
 
@@ -13,11 +23,10 @@
 
 <form action="{{ url('/food/form') }}" method="get">
     <button type="submit" class="view-class-btn">Create Food</button>
- </form>
+     </form>
 
-<!-- Display Community Foods -->
-<div class="food-split left">
-    <h2>Community Foods</h2>
+<div class="container-2">
+    {{-- <h2>Community Foods</h2> --}}
     <div class="foods-list">
         @forelse($communityFoods as $food)
             <div class="food-tab">
@@ -59,20 +68,8 @@
             <p>No community foods available.</p>
         @endforelse
     </div>
-</div>
 
-<style>
-    body{
-        background-color: rgb(36, 37, 65);
-    }
-    h2{
-        color: white;
-    }
-</style>
-
-<div class="food-split right">
-    <!-- Display Official Foods -->
-    <h2>Official Foods</h2>
+    {{-- <h2>Official Foods</h2> --}}
     <div class="foods-list">
         @forelse($officialFoods as $food)
             <!-- Display Official Food Details -->
@@ -100,6 +97,22 @@
             <p>No official foods available.</p>
         @endforelse
     </div>
+</div>
+
+<style>
+    body{
+        background-color: rgb(36, 37, 65);
+    }
+    h2{
+        color: white;
+    }
+</style>
+{{-- 
+<div class="food-split right"> --}}
+    <!-- Display Official Foods -->
+
+
+</div>
 </div>
 
 @endsection

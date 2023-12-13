@@ -40,7 +40,7 @@ class WorkoutPlan extends Model
 
     public function assignedMembers()
     {
-        return $this->belongsToMany(User::class, 'workout_assignments', 'workout_plan_id', 'member_id')
+        return $this->belongsToMany(User::class, 'assignments', 'workout_plan_id', 'member_id')
             ->withPivot('start_date', 'end_date', 'note');
     }
 

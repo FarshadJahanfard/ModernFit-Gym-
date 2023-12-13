@@ -19,8 +19,9 @@ class WorkoutPlanController extends Controller
     {
         $user = Auth::user();
         $workoutPlans = $user->workoutPlans;
+        $dietPlans = $user->dietPlans;
 
-        return view('plans.index', compact('workoutPlans'));
+        return view('plans.index', compact('workoutPlans', 'dietPlans'));
     }
 
     public function show($id)
@@ -57,7 +58,7 @@ class WorkoutPlanController extends Controller
             ]);
         }
 
-        return redirect()->route('workout_plans', ['username' => $user->name])
+        return redirect()->route('plans', ['username' => $user->name])
             ->with('success', 'Workout plan created successfully.');
     }
 
@@ -108,7 +109,7 @@ class WorkoutPlanController extends Controller
         // Delete exercises that were not updated
         $workoutPlan->exercises()->whereIn('id', $existingExerciseIds)->delete();
 
-        return redirect()->route('workout_plans', ['username' => $user->name])
+        return redirect()->route('plans', ['username' => $user->name])
             ->with('success', 'Workout plan updated successfully.');
     }
 
@@ -126,7 +127,7 @@ class WorkoutPlanController extends Controller
         $workoutPlan = WorkoutPlan::findOrFail($id);
         $workoutPlan->delete();
 
-        return redirect()->route('workout_plans', ['username' => $user->name])
+        return redirect()->route('plans', ['username' => $user->name])
             ->with('success', 'Workout plan deleted successfully.');
     }
 }
