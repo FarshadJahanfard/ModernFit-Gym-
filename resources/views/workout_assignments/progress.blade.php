@@ -84,7 +84,7 @@
                     <div class="row g-3 align-items-center">
                         <div class="col-md-4">
                             <label for="exercise_id" class="form-label">Select Exercise</label>
-                            <select class="form-select" id="exercise_id" name="exercise_id" required>
+                            <select class="form-control form-control-sm" id="exercise_id" name="exercise_id" required>
                                 @foreach($assignment->workoutPlan->exercises as $exercise)
                                     <option value="{{ $exercise->id }}">{{ $exercise->exercise_name }}</option>
                                 @endforeach
