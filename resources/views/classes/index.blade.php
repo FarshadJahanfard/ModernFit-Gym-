@@ -15,7 +15,7 @@
                     <!-- Form to add food to user's list -->
                     <form action="{{ route('addClass', ['id' => $class->id]) }}" method="post">
                         @csrf
-                        <button type="submit">Attend</button>
+                        <button class="btn btn-success btn-sm" type="submit">Attend</button>
                     </form>
                 </div>
             @empty

@@ -489,7 +489,7 @@ input {
 }
 
 /* form submit button */
-button[type="submit"] {
+.green-button {
     background-color:#34E951;
     color: #000000;
     padding: 10px 20px;
@@ -499,7 +499,7 @@ button[type="submit"] {
     font-size: 16px;
 }
 
-button[type="submit"]:hover {
+.green-button:hover {
     background-color: #28a745;
     color: #fff;
     text-transform: uppercase;
