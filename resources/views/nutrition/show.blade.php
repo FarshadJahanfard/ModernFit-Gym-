@@ -24,6 +24,9 @@
                 <h2>{{ $food->name }}</h2>
                 <p>Quantity: {{ $food->quantity }}</p>
                 <p>Calories: {{ $food->calories }}</p>
+                <p>Protein: {{ $food->protein }}</p>
+                <p>Fats: {{ $food->fat }}</p>
+                <p>Carbohydrates: {{ $food->carbohydrate }}</p>
                 <p>Description: {{ $food->description }}</p>
                 @if($food->vegetarian)
                     <p>Vegetarian Option</p>
