@@ -308,9 +308,11 @@ header {
 /* join now h1 */
 .join-now {
     margin-bottom: auto; 
-    margin-top:30%;
+    
     text-transform: uppercase;
     padding: 30px;
+    margin-top: 40%;
+    
 }
 
 
@@ -433,4 +435,34 @@ button[type="submit"]:hover {
 
 .form-group:not(:last-child) {
     margin-bottom: 15px;
+}
+
+
+.services{
+    height: 400px;
+    width: 100%;
+    display: flex;
+
+}
+
+
+.carousel-inner img {
+    width: 100%;
+}
+
+
+#demo.carousel {
+    height: 500px;
+}
+
+.carousel-inner img {
+    height: 525px;
+    object-fit: fill; 
+    
+}
+
+.services {
+    height: 400px;
+    width: 100%;
+    display: flex;
 }
