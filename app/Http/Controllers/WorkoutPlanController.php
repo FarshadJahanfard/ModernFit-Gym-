@@ -19,8 +19,9 @@ class WorkoutPlanController extends Controller
     {
         $user = Auth::user();
         $workoutPlans = $user->workoutPlans;
+        $dietPlans = $user->dietPlans;
 
-        return view('plans.index', compact('workoutPlans'));
+        return view('plans.index', compact('workoutPlans', 'dietPlans'));
     }
 
     public function show($id)

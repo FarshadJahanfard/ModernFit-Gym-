@@ -220,6 +220,10 @@ class User extends Authenticatable
         return $this->hasMany(WorkoutPlan::class);
     }
 
+    public function dietPlans() {
+        return $this->hasMany(DietPlan::class, 'trainer_id');
+    }
+
 
     /**
      * Get the members assigned to the trainer.
