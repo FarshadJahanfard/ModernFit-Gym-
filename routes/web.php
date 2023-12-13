@@ -37,7 +37,7 @@ use App\Http\Controllers\ClassesController;
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::post('/classes/add/{id}', [ClassesController::class, 'addClass'])->name('addClass');
-Route::post('/dashboard/remove/{id}', [ClassesController::class, 'removeClass'])->name('removeClass');
+Route::post('/dashboard/remove/{id}', [DashboardController::class, 'removeClass'])->name('removeClass');
 
 Route::get('/classes/form', [ClassesController::class, 'showForm']);
 Route::post('/classes/process', [ClassesController::class, 'processForm']);

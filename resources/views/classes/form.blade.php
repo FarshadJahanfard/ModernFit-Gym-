@@ -9,23 +9,24 @@
         @csrf
     
         <div class="food-form-section">
-            <label for="name">Class Name:</label>
-            <input type="text" id="name" name="name" required><br>
+            <label for="title">Class Name:</label>
+            <input type="text" id="title" name="title" required><br>
         </div>
 
         <div class="food-form-section">
-            <label for="calories">Description:</label>
-            <input type="text" id="calories" name="calories" required><br>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required><br>
         </div>
 
         <div class="food-form-section">
-            <label for="description">Date:</label>
-            <input type="date" id="description" name="description" required></textarea><br>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required></textarea><br>
         </div>
+        
 
         <div class="food-form-section">
-            <label for="vegetarian_option">Time:</label>
-            <input type="time" id="vegetarian_option" name="vegetarian_option"><br>
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time"><br>
         </div>
     
         <input type="submit" value="Submit">
