@@ -17,17 +17,47 @@
  </div>
 
 
+   
+  
+  
+    <!-- The slideshow -->
+   <h1 class="services-h">Services</h1>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+     
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/pass.png" alt="Los Angeles" width="1100" height="500">
+          
+        </div>
+        <div class="carousel-item">
+          <img src="images/chestpump.webp" alt="Chicago" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="images/Cardio.png" alt="New York" width="1100" height="500">
+        </div>
+      </div>
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  
+
+
 <div class="split">
   <div class="split-left">
-    <img src="{{ asset('background1-min.webp') }}" class="flex-item" alt="A man is lifting a weight." loading="lazy">
     <h1 class="join-now">join now from £21.99 a month</h1>
     <button class="join-btn">Join Now</button>
 
   </div>
 </div>
 
-
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae repudiandae rerum mollitia quasi deleniti, odit consequuntur perspiciatis, id harum aliquam nobis quidem minus minima doloremque voluptatem voluptatum earum pariatur provident itaque magni porro cumque beatae nihil! Excepturi est vel, id modi minus laborum in ut. Sed dolore dolorem officiis rem, cupiditate quis minima deserunt! Exercitationem, quas itaque nemo ratione inventore eos in delectus facilis animi amet vitae quia rem nostrum ab assumenda consequuntur pariatur qui suscipit omnis explicabo. Ipsum amet, facilis odio iste dolor ut porro ad sunt nobis architecto ex? Velit asperiores et, aperiam, aliquid, quam quidem ex adipisci iure provident perferendis aliquam omnis deleniti facere? Velit possimus delectus incidunt architecto tempore voluptatibus, quae esse. Consectetur exercitationem libero dolor est ullam sint eaque eligendi id? Quis excepturi, mollitia dolorem et quo in architecto tempora minima deleniti non necessitatibus quibusdam fugiat earum aut maiores iusto praesentium? Veritatis sit quibusdam, tempora iure consequuntur modi, dolorem nemo debitis quas iste accusamus perferendis fuga aut. Doloribus placeat soluta quia voluptates corrupti possimus aut non esse aperiam temporibus unde, reprehenderit dolorem fugit, eos in ipsum voluptatum. Tenetur illo unde a? Illum earum et id magni dicta alias similique. Deleniti dicta enim cupiditate pariatur nisi.
 
 
 @endsection
