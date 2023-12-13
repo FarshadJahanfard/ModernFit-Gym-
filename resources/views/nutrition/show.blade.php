@@ -21,36 +21,38 @@
     <div class="foods-list">
         @forelse($communityFoods as $food)
             <div class="food-tab">
-                <h2>{{ $food->name }}</h2>
-                <p>Quantity: {{ $food->quantity }}</p>
-                <p>Calories: {{ $food->calories }}</p>
-                <p>Protein: {{ $food->protein }}</p>
-                <p>Fats: {{ $food->fat }}</p>
-                <p>Carbohydrates: {{ $food->carbohydrate }}</p>
-                <p>Description: {{ $food->description }}</p>
-                @if($food->vegetarian)
-                    <p>Vegetarian Option</p>
-                @endif
-                <!-- Other food details... -->
-                <!-- Form to add food to user's list -->
-                <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
-                    @csrf
-                    <button class="btn btn-success btn-sm" type="submit">Add to Daily Calories</button>
-                </form>
-                <div class="likes-container">
-                    <!-- Like button -->
-                    <form action="{{ route('likeFood', ['id' => $food->id]) }}" method="post">
+                <div class="food-tab-background">
+                    <h2>{{ $food->name }}</h2>
+                    <p>Quantity: {{ $food->quantity }}</p>
+                    <p>Calories: {{ $food->calories }}</p>
+                    <p>Protein: {{ $food->protein }}</p>
+                    <p>Fats: {{ $food->fat }}</p>
+                    <p>Carbohydrates: {{ $food->carbohydrates }}</p>
+                    <p>Description: {{ $food->description }}</p>
+                    @if($food->vegetarian)
+                        <p>Vegetarian Option</p>
+                    @endif
+                    <!-- Other food details... -->
+                    <!-- Form to add food to user's list -->
+                    <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
                         @csrf
-                        <button id="like" class="fa fa-thumbs-up btn btn-success btn-sm" type="submit"></button>
+                        <button class="btn btn-success btn-sm" type="submit">Add to Daily Calories</button>
                     </form>
-                    <p>Likes: {{ $food->likes }}</p>
-
-                    <!-- Dislike button -->
-                    <form action="{{ route('dislikeFood', ['id' => $food->id]) }}" method="post">
-                        @csrf
-                        <button id="dislike" class="fa fa-thumbs-down btn btn-danger btn-sm" type="submit"><div class="dislike-image"></div></button>
-                    </form>
-                    <p>Dislikes: {{ $food->dislikes }}</p>
+                    <div class="likes-container">
+                        <!-- Like button -->
+                        <form action="{{ route('likeFood', ['id' => $food->id]) }}" method="post">
+                            @csrf
+                            <button id="like" class="fa fa-thumbs-up btn btn-success btn-sm" type="submit"></button>
+                        </form>
+                        <p>Likes: {{ $food->likes }}</p>
+    
+                        <!-- Dislike button -->
+                        <form action="{{ route('dislikeFood', ['id' => $food->id]) }}" method="post">
+                            @csrf
+                            <button id="dislike" class="fa fa-thumbs-down btn btn-danger btn-sm" type="submit"><div class="dislike-image"></div></button>
+                        </form>
+                        <p>Dislikes: {{ $food->dislikes }}</p>
+                    </div>
                 </div>
             </div>
         @empty
@@ -59,6 +61,14 @@
     </div>
 </div>
 
+<style>
+    body{
+        background-color: rgb(36, 37, 65);
+    }
+    h2{
+        color: white;
+    }
+</style>
 
 <div class="food-split right">
     <!-- Display Official Foods -->
@@ -67,18 +77,23 @@
         @forelse($officialFoods as $food)
             <!-- Display Official Food Details -->
             <div class="food-tab">
-                <h2>{{ $food->name }}</h2>
-                <p>Quantity: {{ $food->quantity }}</p>
-                <p>Calories: {{ $food->calories }}</p>
-                <p>Description: {{ $food->description }}</p>
-                @if($food->vegetarian)
-                    <p>Vegetarian Option</p>
-                @endif
-                <!-- Form to add food to user's list -->
-                <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
-                    @csrf
-                    <button class="btn btn-success btn-sm" type="submit">Add to Daily Calories</button>
-                </form>
+                <div class="food-tab-background">
+                    <h2>{{ $food->name }}</h2>
+                    <p>Quantity: {{ $food->quantity }}</p>
+                    <p>Calories: {{ $food->calories }}</p>
+                    <p>Protein: {{ $food->protein }}</p>
+                    <p>Fats: {{ $food->fat }}</p>
+                    <p>Carbohydrates: {{ $food->carbohydrates }}</p>
+                    <p>Description: {{ $food->description }}</p>
+                    @if($food->vegetarian)
+                        <p>Vegetarian Option</p>
+                    @endif
+                    <!-- Form to add food to user's list -->
+                    <form action="{{ route('addFood', ['id' => $food->id]) }}" method="post">
+                        @csrf
+                        <button class="btn btn-success btn-sm" type="submit">Add to Daily Calories</button>
+                    </form>
+                </div>
             </div>
 
         @empty

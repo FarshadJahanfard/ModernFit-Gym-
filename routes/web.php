@@ -39,6 +39,9 @@ Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::post('/classes/add/{id}', [ClassesController::class, 'addClass'])->name('addClass');
 Route::post('/dashboard/remove/{id}', [ClassesController::class, 'removeClass'])->name('removeClass');
 
+Route::get('/classes/form', [ClassesController::class, 'showForm']);
+Route::post('/classes/process', [ClassesController::class, 'processForm']);
+
 // Nutrition Routes
 use App\Http\Controllers\NutritionController;
 
@@ -49,6 +52,7 @@ Route::post('/dislike-food/{id}', [NutritionController::class, 'dislikeFood'])->
 Route::middleware(['auth'])->group(function () {
     Route::get('/nutrition', [NutritionController::class, 'show'])->name('nutrition.show');
     Route::post('/nutrition/add/{id}', [NutritionController::class, 'addFood'])->name('addFood');
+    
 });
 
 // // Still trying to get food creation to work
