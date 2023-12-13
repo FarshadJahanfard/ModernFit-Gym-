@@ -18,8 +18,9 @@ class DietPlanController extends Controller
     public function show($id)
     {
         $dietPlan = DietPlan::findOrFail($id);
+        $assignments = $dietPlan->assignments;
 
-        return view('plans.diet', compact('dietPlan'));
+        return view('plans.diet', compact('dietPlan', 'assignments'));
     }
 
     public function store(Request $request)

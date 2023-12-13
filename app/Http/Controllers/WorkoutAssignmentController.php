@@ -16,7 +16,7 @@ class WorkoutAssignmentController extends Controller
         $members = Auth::user()->getMembers(); // Assuming you have a method to get members in your User model
         $workoutPlan = WorkoutPlan::findOrFail($planId);
 
-        return view('workout_assignments.create', compact('members', 'workoutPlan'));
+        return view('assignments.create', compact('members', 'workoutPlan'));
     }
 
     public function store(Request $request)
@@ -40,7 +40,7 @@ class WorkoutAssignmentController extends Controller
             'note' => $request->input('note'),
         ]);
 
-        return redirect()->route('workout_plans', ['username' => $user->name])
+        return redirect()->route('plans', ['username' => $user->name])
             ->with('success', 'Workout plan assigned successfully.');
     }
 
@@ -51,7 +51,7 @@ class WorkoutAssignmentController extends Controller
             ->orderBy('updated_at', 'desc')
             ->get();
 
-        return view('workout_assignments.progress', compact('assignment', 'logs'));
+        return view('assignments.progress', compact('assignment', 'logs'));
     }
 
     public function userAssignments()
@@ -59,14 +59,7 @@ class WorkoutAssignmentController extends Controller
         $user = Auth::user();
         $assignments = $user->assignedWorkouts()->with('workoutPlan')->get();
 
-        return view('workout_assignments.member', compact('assignments'));
-    }
-
-    public function edit($id)
-    {
-        $assignment = WorkoutAssignment::findOrFail($id);
-
-        return view('assignments.edit', compact('assignment'));
+        return view('assignments.member', compact('assignments'));
     }
 
     public function update(Request $request, $id)

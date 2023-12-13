@@ -44,7 +44,7 @@ class WorkoutLogController extends Controller
             'note' => $request->input('note'),
         ]);
 
-        return redirect()->route('workout_assignments.progress', ['assignmentId' => $assignmentId])
+        return redirect()->route('assignments.progress', ['assignmentId' => $assignmentId])
             ->with('success', 'Workout log added successfully.');
     }
 

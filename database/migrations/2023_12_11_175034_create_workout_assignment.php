@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workout_assignments', function (Blueprint $table) {
+        Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('member_id');
             $table->unsignedBigInteger('workout_plan_id');
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('note')->nullable();
             $table->timestamps();
 
-            $table->foreign('assignment_id')->references('id')->on('workout_assignments');
+            $table->foreign('assignment_id')->references('id')->on('assignments');
             $table->foreign('exercise_id')->references('id')->on('workout_exercises');
         });
     }
@@ -42,7 +42,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('workout_assignments');
+        Schema::dropIfExists('assignments');
         Schema::dropIfExists('workout_logs');
     }
 };

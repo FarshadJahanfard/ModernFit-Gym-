@@ -18,7 +18,7 @@ class DietPlan extends Model
 
     public function assignments()
     {
-        return $this->hasMany(DietAssignment::class);
+        return $this->hasMany(DietAssignment::class, 'plan_id');
     }
 }
 

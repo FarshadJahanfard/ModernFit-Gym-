@@ -174,7 +174,7 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity']],
     Route::post('/memberships/purchase/{membership}', [MembershipController::class, 'purchase'])->name('memberships.purchase');
 
     // Route to show user plans
-    Route::get('/profile/{username}/assignments', [WorkoutAssignmentController::class, 'userAssignments'])->name('workout_assignments');
+    Route::get('/profile/{username}/assignments', [WorkoutAssignmentController::class, 'userAssignments'])->name('assignments');
 
     Route::delete('/workout_logs/{id}', [WorkoutLogController::class, 'delete'])->name('workout_logs.destroy');
 });
@@ -240,12 +240,19 @@ Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function (
     Route::resource('workout_assignments', WorkoutAssignmentController::class)->only([
         'edit', 'update', 'destroy'
     ]);
+
+    Route::get('/diet_assignments/create/{planId}', [DietAssignmentController::class, 'create'])->name('diet_assignments.create');
     Route::post('/diet_assignments/store', [DietAssignmentController::class, 'store'])->name('diet_assignments.store');
+    Route::resource('diet_assignments', DietAssignmentController::class)->only([
+        'edit', 'update', 'destroy'
+    ]);
 });
 
 Route::group(['middleware' => ['auth', 'activated', 'assignmentAccess']], function () {
-    Route::get('/progress/{assignmentId}', [WorkoutAssignmentController::class, 'progress'])->name('workout_assignments.progress');
+    Route::get('/workout/{assignmentId}', [WorkoutAssignmentController::class, 'progress'])->name('workout_assignments.progress');
     Route::post('/store-workout-log/{assignmentId}', [WorkoutLogController::class, 'store'])->name('workout_logs.store');
+
+    Route::get('/diet/{assignmentId}', [DietAssignmentController::class, 'progress'])->name('diet_assignments.progress');
 });
 
 Route::redirect('/php', '/phpinfo', 301);
