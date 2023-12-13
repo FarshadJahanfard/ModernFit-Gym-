@@ -15,9 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('calories');
-            $table->integer('protein');
-            $table->integer('fat');
-            $table->integer('carbohydrates');
             $table->text('description')->nullable();
             $table->boolean('vegetarian')->default(false);
             $table->boolean('official')->default(false); // New column for distinguishing official foods

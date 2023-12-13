@@ -505,7 +505,6 @@ input {
     text-transform: uppercase;
 }
 
-
 .form-group:not(:last-child) {
     margin-bottom: 15px;
 }
@@ -517,7 +516,8 @@ input {
     align-self: center;
     padding: 1rem;
     margin: 1rem;
-    background:linear-gradient(41deg, rgba(26,209,123,1) 11%, rgba(63,63,79,1) 47%, rgba(26,28,28,1) 100%);
+    background:linear-gradient(41deg, rgb(34 35 38) 11%, rgba(63,63,79,1) 47%, rgb(52 224 110) 100%);;
+    
 }
 #title-food{
     color: #fff;

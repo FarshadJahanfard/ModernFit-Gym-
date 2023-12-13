@@ -36,17 +36,22 @@
             @foreach($meals as $meal)
 
             <div class="food-tab">
-                <h2>{{$meal->name}}</h2>
-                <p>Quantity: {{ $meal->quantity }}</p>
-                <p>Calories: {{ $meal->calories }}</p>
-                <p>Description: {{ $meal->description }}</p>
-                @if($meal->vegetarian)
-                <p>Vegetarian Option</p>
-                @endif
-                <form action="{{ route('removeFood', ['id' => $meal->id]) }}" method="post">
-                    @csrf
-                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                </form>
+                <div class="food-tab-background">
+                    <h2>{{$meal->name}}</h2>
+                    <p>Quantity: {{ $meal->quantity }}</p>
+                    <p>Calories: {{ $meal->calories }}</p>
+                    <p>Protein: {{ $meal->protein }}</p>
+                    <p>Fats: {{ $meal->fat }}</p>
+                    <p>Carbohydrates: {{ $meal->carbohydrates }}</p>
+                    <p>Description: {{ $meal->description }}</p>
+                    @if($meal->vegetarian)
+                    <p>Vegetarian Option</p>
+                    @endif
+                    <form action="{{ route('removeFood', ['id' => $meal->id]) }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </div>
             </div>
             @endforeach
         </div>
