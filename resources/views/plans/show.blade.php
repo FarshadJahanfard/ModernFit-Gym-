@@ -31,11 +31,8 @@
                                     <a href="{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}">
                                         {{ $assignment->member->name }}
                                     </a>
-                                    @php
-                                        $progressBarWidth = getProgressBarWidth($assignment);
-                                    @endphp
-                                    <div class="progress ml-3 mt-1" style="width: 300px;">
-                                        <div class="progress-bar" role="progressbar" style="width: {{ $progressBarWidth }}%;" aria-valuenow="{{ $progressBarWidth }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div style="width:300px;">
+                                        @include('partials.progress-bar', ['assignment' => $assignment])
                                     </div>
                                 </div>
                                 <div class="float-right">

@@ -10,12 +10,12 @@
             <ul class="list-group mt-3">
                 @foreach($assignments as $assignment)
                     @php
-                    $progressBarWidth = getProgressBarWidth($assignment);
+                        $progressBarWidth = getProgressBarWidth($assignment);
                     @endphp
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <span>{{ $assignment->workoutPlan->name }}</span>
-                        <div class="progress" style="width: 60%;">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $progressBarWidth }}%;" aria-valuenow="{{ $progressBarWidth }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div style="width:60%;">
+                            @include('partials.progress-bar', ['assignment' => $assignment])
                         </div>
                         <span class="badge badge-primary badge-pill">{{ $progressBarWidth }}%</span>
                         <a href="{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}" class="btn btn-info btn-sm">View</a>
