@@ -16,8 +16,7 @@ class CheckAssignmentAccess
         $user = Auth::user();
 
         if ($user->id == $assignment->member_id ||
-            $user->id == $assignment->workoutPlan->user_id ||
-            $user->hasRole('admin')
+            $user->id == $assignment->workoutPlan->user_id
         ) {
             return $next($request);
         }
