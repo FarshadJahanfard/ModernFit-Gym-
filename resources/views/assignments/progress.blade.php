@@ -1,8 +1,8 @@
-<!-- resources/views/workout_assignments/progress.blade.php -->
+<!-- resources/views/assignments/progress.blade.php -->
 
 @extends('layouts.app')
 
-@include('workout_assignments.functions')
+@include('assignments.functions')
 
 @section('content')
     <div class="container mt-4">
@@ -16,11 +16,17 @@
 
                 @role("trainer")
                 <div class="d-flex justify-content-end align-items-center mt-3">
-                    <button class="btn btn-warning btn-sm mr-2" onclick="location.href='{{ route('workout_plans.edit', ['id' => $assignment->workoutPlan->id]) }}'">Edit</button>
-                    <form action="{{ route('workout_plans.destroy', ['id' => $assignment->workoutPlan->id]) }}" method="post" class="d-inline">
+                    <button class="btn btn-warning btn-sm mr-2"
+                            onclick="location.href='{{ route('workout_plans.edit', ['id' => $assignment->workoutPlan->id]) }}'">
+                        Edit
+                    </button>
+                    <form action="{{ route('workout_plans.destroy', ['id' => $assignment->workoutPlan->id]) }}"
+                          method="post" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this workout plan?')">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete this workout plan?')">Delete
+                        </button>
                     </form>
                 </div>
                 @endrole
@@ -47,10 +53,12 @@
                             <td>{{ $exercise->exercise_name }}</td>
                             <td>
                                 <div class="amount-done-container">
-                                    <form class="amount-done-form d-flex flex-gap" method="post" action="{{ route('workout_logs.store', ['assignmentId' => $assignment->id]) }}">
+                                    <form class="amount-done-form d-flex flex-gap" method="post"
+                                          action="{{ route('workout_logs.store', ['assignmentId' => $assignment->id]) }}">
                                         @csrf
                                         <input type="hidden" name="exercise_id" value="{{ $exercise->id }}">
-                                        <input type="number" class="form-control amount-done-input" name="sets" value="{{ $amount }}" min="0" step="1">
+                                        <input type="number" class="form-control amount-done-input" name="sets"
+                                               value="{{ $amount }}" min="0" step="1">
                                         <button type="submit" class="btn btn-success btn-sm submit-amount-done d-none">
                                             <i class="fas fa-check"></i>
                                         </button>
@@ -127,7 +135,8 @@
                                 <form action="{{ route('workout_logs.destroy', ['id' => $log->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this log?')">
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Are you sure you want to delete this log?')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

@@ -21,18 +21,20 @@
         $logs = $assignment->workoutLogs;
         $totalProgress = 0;
 
+        $exercises = $assignment->workoutPlan->exercises;
+
         // Filter logs to exclude those with null exercise values
         $logs = $logs->filter(function ($log) {
             return $log->exercise !== null;
         });
 
-        foreach ($logs as $log) {
-            $progress = calculateProgress($logs, $log->exercise->id, $log->exercise->amount);
+        foreach ($exercises as $exercise) {
+            $progress = calculateProgress($logs, $exercise->id, $exercise->amount);
             $totalProgress += $progress;
         }
 
         $averageProgress = count($logs) > 0
-            ? ($totalProgress / count($logs))
+            ? ($totalProgress / count($exercises))
             : 0;
 
         return round($averageProgress);
