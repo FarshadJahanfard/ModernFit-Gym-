@@ -385,8 +385,8 @@ header {
 }
 /* join now h1 */
 .join-now {
-    margin-bottom: auto;
-    margin-top:30%;
+  
+    margin-top:10%;
     text-transform: uppercase;
     padding: 30px;
 }
@@ -519,6 +519,7 @@ input {
     align-self: center;
     padding: 1rem;
     margin: 1rem;
+    border-radius: 8px;
     background:linear-gradient(41deg, rgb(34 35 38) 11%, rgba(63,63,79,1) 47%, rgb(52 224 110) 100%);;
     
 }

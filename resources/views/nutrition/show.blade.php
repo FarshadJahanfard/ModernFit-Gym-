@@ -15,7 +15,9 @@
         text-align: center;
         text-shadow: 2px 2px #121111;
         text-transform: uppercase;
+        color: white;
     }
+     
 </style>
 
 {{-- W3schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_toggle_like_dislike --}}
@@ -99,14 +101,6 @@
     </div>
 </div>
 
-<style>
-    body{
-        background-color: rgb(36, 37, 65);
-    }
-    h2{
-        color: white;
-    }
-</style>
 {{-- 
 <div class="food-split right"> --}}
     <!-- Display Official Foods -->

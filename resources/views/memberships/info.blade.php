@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <h4>{{ $membership->name }} Membership Information</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body   ">
                     <p><strong>Name:</strong> {{ $membership->name }}</p>
                     <p><strong>Price:</strong> ${{ $membership->price }}</p>
                     <p><strong>Description:</strong> {{ $membership->description }}</p>
