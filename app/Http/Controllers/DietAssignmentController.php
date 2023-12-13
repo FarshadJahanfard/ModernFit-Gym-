@@ -112,8 +112,8 @@ class DietAssignmentController extends Controller
 
     public function progress($assignmentId)
     {
-        $user = Auth::user();
         $assignment = DietAssignment::findOrFail($assignmentId);
+        $user = $assignment->user;
         $logs = $user->foods;
 
         return view('assignments.diet.progress', compact('assignment', 'logs'));

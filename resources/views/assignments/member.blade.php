@@ -18,7 +18,7 @@
                             @include('partials.progress-bar', ['assignment' => $assignment])
                         </div>
                         <span class="badge badge-primary badge-pill">{{ $progressBarWidth }}%</span>
-                        <a href="{{ route('assignments.progress', ['assignmentId' => $assignment->id]) }}"
+                        <a href="{{ route('workout_assignments.progress', ['assignmentId' => $assignment->id]) }}"
                            class="btn btn-info btn-sm">View</a>
                     </li>
                 @endforeach
