@@ -242,4 +242,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(WorkoutAssignment::class, 'member_id');
     }
+    public function assignedDiets()
+    {
+        return $this->hasMany(DietAssignment::class, 'user_id');
+    }
 }

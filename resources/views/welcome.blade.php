@@ -10,9 +10,7 @@
     <img src="{{ asset('images/gym5-min.webp') }}" class="flex-item" alt="A group of people exercising together." loading="lazy">
     <img src="{{ asset('images/gym6-min.webp') }}" class="flex-item" alt="A man performing a chest press exercise." loading="lazy">
     <div class="button-align">
-       <form action="{{ route('classes') }}" method="get">
-          <button type="submit" class="view-class-btn">View Classes</button>
-       </form>
+        <a href="classes" class="view-class-btn">View Classes</a>
     </div>
  </div>
 
@@ -53,7 +51,7 @@
 <div class="split">
   <div class="split-left">
     <h1 class="join-now">join now from £21.99 a month</h1>
-    <button class="join-btn">Join Now</button>
+    <a href="/memberships" class="join-btn">Join Now</a>
 
   </div>
 </div>
