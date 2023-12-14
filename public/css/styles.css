@@ -636,8 +636,11 @@ input {
 /* footer lcons hover */
 
 #icon-color:hover {
-    color:  rgba(20, 196, 40, 0.8); 
-   
+    color:  #34E951; 
   }
 
+/* nav hover */
 
+nav ul li a {
+    transition: background-color 0.3s ease, color 0.3s ease; 
+  }

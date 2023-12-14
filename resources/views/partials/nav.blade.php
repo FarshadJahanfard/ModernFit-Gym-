@@ -9,7 +9,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             {{-- Left Side Of Navbar --}}
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto" class="parent-links" id="icon-color">
                 @role('admin')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,28 +61,28 @@
                     </li>
                 @endrole
                 <li class="nav-item">
-                    <a class="nav-link" href='{{ url('/memberships') }}'>Memberships</a>
+                    <a class="nav-link" id="icon-color" href='{{ url('/memberships') }}'>Memberships</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='{{ url('/daypass') }}'>Daypass</a>
+                    <a class="nav-link" id="icon-color" href='{{ url('/daypass') }}'>Daypass</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='{{ url('/dashboard') }}'>Dashboard</a>
+                    <a class="nav-link" id="icon-color" href='{{ url('/dashboard') }}'>Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='{{ url('/nutrition') }}'>Nutrition</a>
+                    <a class="nav-link" id="icon-color" href='{{ url('/nutrition') }}'>Nutrition</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='{{ url('/classes') }}'>Classes</a>
+                    <a class="nav-link" id="icon-color" href='{{ url('/classes') }}'>Classes</a>
                 </li>
             </ul>
             {{-- Right Side Of Navbar --}}
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" >
                 {{-- Authentication Links --}}
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
                     @if (Route::has('register'))
-                        <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
+                        <li><a class="nav-link" id="icon-color" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
