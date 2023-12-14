@@ -3,40 +3,51 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="container">
-        <h1>{{ config('app.name') }}</h1>
-
-        <h2>Memberships for {{ $user->name }}</h2>
+    <div class="container mt-4">
+        <h2 class="mb-3">Memberships for <span class="text-success">{{ $user->name }}</span></h2>
 
         @if ($activeMembership)
-            <p>You currently have an active membership. Details:</p>
-            <ul>
-                <li><strong>Start Date:</strong> {{ $activeMembership->pivot->start_date }}</li>
-                <li><strong>End Date:</strong> {{ $activeMembership->pivot->end_date }}</li>
-                <li><strong>Branch:</strong> {{ $activeMembership->branch->name }}</li>
-                <li><strong>Passcode:</strong> {{ $activeMembership->pivot->passcode }}</li>
-            </ul>
+            <div class="card border-success mb-3">
+                <div class="card-header bg-success text-white">
+                    <h3>{{ $activeMembership->name }}</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-success">You currently have an active membership. Details:</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Start Date:</strong> {{ \Carbon\Carbon::parse($activeMembership->pivot->start_date)->format('F d, Y') }}</li>
+                        <li class="list-group-item"><strong>End Date:</strong> {{ \Carbon\Carbon::parse($activeMembership->pivot->end_date)->format('F d, Y') }}</li>
+                        <li class="list-group-item"><strong>Branch:</strong> {{ $activeMembership->branch->name }}</li>
+                    </ul>
+                    <p class="card-text text-right text-muted" style="font-size: 20px;">
+                        <strong>Passcode:</strong> <span class="text-success font-weight-bold">{{ $activeMembership->pivot->passcode }}</span>
+                    </p>
+                </div>
+            </div>
         @else
-            <p>You do not have an active membership at the moment.</p>
+            <p class="alert alert-info">You do not have an active membership at the moment.</p>
         @endif
 
         @if ($memberships->count() > 0)
-            <p>Memberships History:</p>
-            <ul>
-                @foreach ($memberships as $membership)
-                    <li>
-                        <strong>Start Date:</strong> {{ $membership->pivot->start_date }},
-                        <strong>End Date:</strong> {{ $membership->pivot->end_date }},
-                        <strong>Passcode:</strong> {{ $membership->pivot->passcode }}
-                    </li>
-                @endforeach
-            </ul>
+            <div class="card border-primary mb-3">
+                <div class="card-header bg-primary text-white">
+                    <h4>Memberships History</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        @foreach ($memberships as $membership)
+                            <li class="list-group-item">
+                                <h5 class="card-title">{{ $membership->name }}</h5>
+                                <p class="card-text">
+                                    <strong>Start Date:</strong> {{ \Carbon\Carbon::parse($membership->pivot->start_date)->format('F d, Y') }},
+                                    <strong>End Date:</strong> {{ \Carbon\Carbon::parse($membership->pivot->end_date)->format('F d, Y') }}
+                                </p>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         @else
-            <p>You have not purchased any memberships yet.</p>
+            <p class="alert alert-warning">You have not purchased any memberships yet.</p>
         @endif
-
-        <p>If you have any questions or concerns, feel free to contact us.</p>
-
-        <p>Thanks,<br>{{ config('app.name') }}<br>© 2023 {{ config('app.name') }}. All rights reserved.</p>
     </div>
 @endsection

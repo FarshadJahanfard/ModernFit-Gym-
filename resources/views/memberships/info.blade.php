@@ -10,9 +10,8 @@
                 <div class="card-body   ">
                     <p><strong>Name:</strong> {{ $membership->name }}</p>
                     <p><strong>Price:</strong> ${{ $membership->price }}</p>
+                    <p><strong>Duration: </strong> 1 month</p>
                     <p><strong>Description:</strong> {{ $membership->description }}</p>
-
-                    <!-- Add any additional information or details here -->
 
                     <form method="POST" action="{{ route('memberships.purchase', ['membership' => $membership->id,]) }}">
                         @csrf
