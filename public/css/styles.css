@@ -334,6 +334,10 @@ header {
     color: #fff;
 }
 
+.view-class-btn:hover{
+    color:  #000000;
+}
+
 
 /* INDEX SPLIT SECTION PARENT */
 .split {
@@ -562,7 +566,7 @@ input {
     margin-bottom: 0;
     color: #fff;
     text-align: center;
-    height: 60px;
+
     padding: 20px;
 }
 

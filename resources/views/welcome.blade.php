@@ -11,7 +11,7 @@
     <img src="{{ asset('images/gym6-min.webp') }}" class="flex-item" alt="A man performing a chest press exercise." loading="lazy">
     <div class="button-align">
        <form action="{{ route('classes') }}" method="get">
-          <button type="submit" class="view-class-btn">View Classes</button>
+          <button type="submit" class="view-class-btn" style="margin-bottom: 6px">View Classes</button>
        </form>
     </div>
  </div>
@@ -21,7 +21,7 @@
   
   
     <!-- The slideshow -->
-   <h1 class="services-h">Services</h1>
+   <h1 class="services-h">View our services below</h1>
     <div id="demo" class="carousel slide" data-ride="carousel">
      
       <div class="carousel-inner">
