@@ -18,9 +18,9 @@
             <div class="col-lg-4 mb-4">
                 <h5>Follow Us</h5>
                 <div class="social-icons">
-                    <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-white mr-3"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white mr-3"><i class="fab fa-facebook-f" id="icon-color"></i></a>
+                    <a href="#" class="text-white mr-3"><i class="fab fa-twitter"  id="icon-color"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-instagram" id="icon-color"></i></a>
                 </div>
             </div>
         </div>

@@ -319,6 +319,7 @@ header {
     font-size: 20px;
     line-height: normal;
     text-transform: uppercase;
+    margin: 5px;
     /* position: fixed; Use fixed positioning to keep the button at the center */
     /* top: 50%; Center vertically */
     /* left: 50%; Center horizontally */
@@ -630,3 +631,13 @@ input {
   *::-webkit-scrollbar-track {
     background-color: #f1f1f1; /* Color of the track */
   }
+
+
+/* footer lcons hover */
+
+#icon-color:hover {
+    color:  rgba(20, 196, 40, 0.8); 
+   
+  }
+
+

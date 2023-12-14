@@ -21,7 +21,7 @@
 
 
     <!-- The slideshow -->
-   <h1 class="services-h">Services</h1>
+   <h1 class="services-h">View our services below.</h1>
     <div id="demo" class="carousel slide" data-ride="carousel">
 
       <div class="carousel-inner">
