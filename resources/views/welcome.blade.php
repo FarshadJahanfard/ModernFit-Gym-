@@ -10,9 +10,7 @@
     <img src="{{ asset('images/gym5-min.webp') }}" class="flex-item" alt="A group of people exercising together." loading="lazy">
     <img src="{{ asset('images/gym6-min.webp') }}" class="flex-item" alt="A man performing a chest press exercise." loading="lazy">
     <div class="button-align">
-       <form action="{{ route('classes') }}" method="get">
-          <button type="submit" class="view-class-btn">View Classes</button>
-       </form>
+        <a href="classes" class="view-class-btn">View Classes</a>
     </div>
  </div>
 
