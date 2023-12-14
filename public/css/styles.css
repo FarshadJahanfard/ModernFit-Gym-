@@ -181,6 +181,11 @@ header {
     transition-duration: 0.5s;
 }
 
+#dark-nav{
+    background-color: #343a40;
+}
+
+
 
 .action-button {
     position: absolute;
@@ -636,11 +641,41 @@ input {
 /* footer lcons hover */
 
 #icon-color:hover {
-    color:  #34E951; 
-  }
+    color:  #34E951;   
+}
+
+#icon-color{
+    color: white;
+}
+
 
 /* nav hover */
 
 nav ul li a {
     transition: background-color 0.3s ease, color 0.3s ease; 
-  }
+}
+
+.navbar-light{
+    color: red;
+}
+a.navbar-brand{
+    color: red;
+    
+}
+
+.card-header{
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#day-btn{
+    font-size: 16px;
+}
+#day-btn:hover{
+    background-color: red;
+}
+
+.btn-primary:hover {
+    background-color: red; 
+}
+    

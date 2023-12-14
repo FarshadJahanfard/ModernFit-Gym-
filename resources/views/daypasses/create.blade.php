@@ -44,7 +44,7 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Purchase DayPass</button>
+                            <button type="submit" class="btn btn-primary" id="day-btn" style="background: #34E951; color: black;";>Purchase DayPass</button>
                         </form>
                     </div>
                 </div>
@@ -52,3 +52,5 @@
         </div>
     </div>
 @endsection
+
+

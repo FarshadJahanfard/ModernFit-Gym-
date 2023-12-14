@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel" id="dark-nav">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {!! config('app.name', trans('titles.app')) !!}
@@ -80,7 +80,7 @@
             <ul class="navbar-nav ml-auto" >
                 {{-- Authentication Links --}}
                 @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
+                    <li><a class="nav-link" id="icon-color" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
                     @if (Route::has('register'))
                         <li><a class="nav-link" id="icon-color" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
                     @endif
