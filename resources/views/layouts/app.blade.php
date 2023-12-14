@@ -44,7 +44,7 @@
     <body>
         <div id="app">
             @include('partials.nav')
-            <main class="py-4">
+            <main class="py-4 min-vh-100">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -54,6 +54,7 @@
                 </div>
                 @yield('content')
             </main>
+            @include('partials.footer')
         </div>
         @if(config('settings.googleMapsAPIStatus'))
             {!! HTML::script('//maps.googleapis.com/maps/api/js?key='.config("settings.googleMapsAPIKey").'&libraries=places&dummy=.js', array('type' => 'text/javascript')) !!}
