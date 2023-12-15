@@ -46,11 +46,35 @@
     justify-content: center;
 }
 
+.food-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
 .foods-list{
 
     overflow: scroll;
     height: 100%;
     margin: 1rem;
+    width: 50%;
+}
+
+.food-tab{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+
+    /* Makes both food lists even heights */
+    min-height: 415px; 
+    
+    border-radius: 8px;
+    background:linear-gradient(41deg, rgb(34 35 38) 11%, rgba(63,63,79,1) 47%, rgb(52 224 110) 100%);;
+
 }
 
 .food-split {
@@ -521,18 +545,6 @@ input {
 .form-group:not(:last-child) {
     margin-bottom: 15px;
 }
-
-.food-tab{
-    display: flex;
-    flex-direction: column;
-    /* width: 50%; */
-    align-self: center;
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 8px;
-    background:linear-gradient(41deg, rgb(34 35 38) 11%, rgba(63,63,79,1) 47%, rgb(52 224 110) 100%);;
-
-}
 #title-food{
     color: #fff;
 }
@@ -596,11 +608,23 @@ input {
 }
 
 
-.foods-list{
-    width: 50%;
+.class-list{
     height: 500px;
     overflow-x: hidden;
 }
+
+.class-tab{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 8px;
+    background:linear-gradient(41deg, rgb(34 35 38) 11%, rgba(63,63,79,1) 47%, rgb(52 224 110) 100%);;
+
+}
+
 /* For WebKit (Chrome, Safari) and Blink (Opera) browsers */
 ::-webkit-scrollbar {
     width: 2px;

@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="classes-container">
-    <div class="class-tab">
+    <div class="class-group">
         <h2 class="classes-title">Available Classes</h2>
-        <div class="foods-list">
+        <div class="class-list">
             @forelse($classes as $class)
-                <div class="food-tab">
+                <div class="class-tab">
                     <h2 id="title-food">{{ $class->title }}</h2>
                     <p id="title-food">When: {{ $class->date }} Time: {{ $class->time }}</p>
                     <p id="title-food">Description: {{ $class->description }}</p>
