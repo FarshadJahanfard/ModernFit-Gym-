@@ -53,12 +53,18 @@
     width: 100%;
 }
 
-.foods-list{
+.food-list{
+    overflow-y: scroll;
+    height: 70%;
+    margin-bottom: 2rem;
+    width: 100%;
+}
 
-    overflow: scroll;
-    height: 100%;
-    margin: 1rem;
-    width: 50%;
+.dashboard-class-list{
+    overflow-y: scroll;
+    height: 96%;
+    margin-bottom: 2rem;
+    width: 100%;
 }
 
 .food-tab{
@@ -68,13 +74,68 @@
     align-self: center;
     padding: 1rem;
     margin: 1rem;
+    color: #fff;
 
     /* Makes both food lists even heights */
-    min-height: 415px; 
-    
+    /* min-height: 415px;  */
+
     border-radius: 8px;
     background:linear-gradient(41deg, rgb(34 35 38) 11%, rgba(63,63,79,1) 47%, rgb(52 224 110) 100%);;
 
+}
+
+.dashboard-top {
+    background-color: white;
+    z-index: 1;
+    margin: 1rem;
+    margin-bottom: 0px;
+    border-radius: 16px;
+    padding: 1rem;
+    /* margin-top: 0%; */
+}
+
+.dashboard-container {
+    /* display: flex; */
+    /* overflow-x: scroll; */
+    display: flex;
+}
+
+.dashboard-section {
+    background-color: white;
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 16px;
+    height: 550px;
+}
+
+.meals {
+    width: 50%
+}
+
+.classes {
+    width: 50%
+}
+
+.food-details {
+    display: none;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: black;
+}
+
+.food-details p{
+    margin-bottom: 0px;
+}
+
+.view-more-btn {
+    cursor: pointer;
+    color: #007bff;
+}
+
+.remove{
+    margin-top: 1px;
 }
 
 .food-split {

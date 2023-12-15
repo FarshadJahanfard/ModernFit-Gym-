@@ -10,52 +10,35 @@ class NutritionController extends Controller
 {
     public function show()
     {
-        // Retrieve community foods from the database
         $communityFoods = Food::where('official', false)->get();
-
-        // Retrieve official foods from the database
         $officialFoods = Food::where('official', true)->get();
-
-        // Calculate the running total of calories for community foods
         $communityRunningTotal = $communityFoods->sum('calories');
-
-        // Calculate the running total of calories for official foods
         $officialRunningTotal = $officialFoods->sum('calories');
 
-        // Pass the food items and running totals to the nutrition view
         return view('nutrition.show', compact('communityFoods', 'officialFoods', 'communityRunningTotal', 'officialRunningTotal'));
     }
-    
+
     public function addFood(Request $request, $id)
-    {
-        // Find the food item by ID
-        $food = Food::find($id);
+{
+    $food = Food::find($id);
+    $user = Auth::user();
 
-        // Get the currently authenticated user
-        $user = Auth::user();
+    $user->foods()->attach($food->id, ['created_at' => now()]);
 
-        // Associate the food item with the user through the link table
-        $user->foods()->attach($food->id);
-
-        // Redirect back to the nutrition page
-        return redirect()->route('nutrition.show')->with('success', 'Food has been added to todays meals.');
-    }
+    return redirect()->route('nutrition.show')->with('success', 'Food has been added to today\'s meals.');
+}
 
     public function likeFood($id)
     {
         $food = Food::find($id);
         $user = Auth::user();
 
-        // Check if the user has already disliked the food
         if ($user->dislikedFoods->contains($food->id)) {
-            // If disliked, remove the dislike
             $user->dislikedFoods()->detach($food->id);
             $food->dislikes -= 1;
         }
 
-        // Check if the user has already liked the food
         if (!$user->likedFoods->contains($food->id)) {
-            // If not liked, add the like
             $user->likedFoods()->attach($food->id);
             $food->likes += 1;
         }
@@ -69,16 +52,12 @@ class NutritionController extends Controller
         $food = Food::find($id);
         $user = Auth::user();
 
-        // Check if the user has already liked the food
         if ($user->likedFoods->contains($food->id)) {
-            // If liked, remove the like
             $user->likedFoods()->detach($food->id);
             $food->likes -= 1;
         }
 
-        // Check if the user has already disliked the food
         if (!$user->dislikedFoods->contains($food->id)) {
-            // If not disliked, add the dislike
             $user->dislikedFoods()->attach($food->id);
             $food->dislikes += 1;
         }
