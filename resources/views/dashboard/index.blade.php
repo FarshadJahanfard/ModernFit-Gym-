@@ -8,6 +8,10 @@
             padding-top: 0px;
         }
 
+        body{
+            overflow: hidden;
+        }
+
         .filter{
             background-color: rgb(219, 127, 7);
             color: #fff;
