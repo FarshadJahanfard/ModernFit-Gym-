@@ -11,12 +11,15 @@
                     <h2 id="title-food">{{ $class->title }}</h2>
                     <p id="title-food">When: {{ $class->date }} Time: {{ $class->time }}</p>
                     <p id="title-food">Description: {{ $class->description }}</p>
-                    <!-- Other food details... -->
-                    <!-- Form to add food to user's list -->
-                    <form action="{{ route('addClass', ['id' => $class->id]) }}" method="post">
-                        @csrf
-                        <button class="btn btn-success btn-sm" type="submit">Attend</button>
-                    </form>
+                    @if (Auth::check() && Auth::user()->classes->contains($class->id))
+                        <button class="btn btn-secondary btn-sm" disabled>Registered</button>
+                    @else
+                        <form action="{{ route('addClass', ['id' => $class->id]) }}" method="post">
+                            @csrf
+                            <button class="btn btn-success btn-sm" type="submit">Attend</button>
+                        </form>
+                    @endif
+
                 </div>
             @empty
                 <p>No classes available.</p>

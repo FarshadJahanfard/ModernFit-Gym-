@@ -72,10 +72,10 @@
             @endif
         </div>
         <div class="dashboard-section classes">
+            <h2>Your classes:</h2>
             @if ($classes->isEmpty())
                 <p>You are not signed up for any classes.</p>
             @else
-                <h2>Your classes:</h2>
                 <div class="dashboard-class-list">
                     @foreach ($classes as $class)
                         <div class="food-tab">
@@ -93,10 +93,10 @@
             @endif
         </div>
         <div class="dashboard-section classes">
+            <h2>Your Plan Progress:</h2>
             @if ($classes->isEmpty())
                 <p>You dont have any plans assigned.</p>
             @else
-                <h2>Your Plan Progress:</h2>
                 <div class="food-list">
                     @foreach ($classes as $class)
                         <div class="food-tab">

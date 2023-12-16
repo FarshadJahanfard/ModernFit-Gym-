@@ -27,12 +27,14 @@
             border-radius: 16px;
             height: 650px;
             width: 50%;
-            height: 620px;
+            height: 600px;
+            overflow: hidden;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
         }
 
         .food-list{
-            height: 100%;
+            height: 80%;
+            border-radius: 16px;
         }
 
         .nutrition-top{
@@ -58,9 +60,9 @@
 
     <div class="food-container">
         <div class="nutrition-section">
+            <h2>Community Foods</h2>
+            <p>Foods in this section are community made foods made by other users. If you do not see a food item on here you could always add to this list.</p>
             <div class="food-list">
-                <h2>Community Foods</h2>
-                <p>Foods in this section are community made foods made by other users. If you do not see a food item on here you could always add to this list.</p>
                 @forelse($communityFoods as $food)
                     <div class="food-tab">
                         <h2>{{ $food->name }}</h2>
@@ -105,9 +107,9 @@
         </div>
 
         <div class="nutrition-section">
+            <h2>Official Foods</h2>
+            <p>This section contains all of the essential food items that have been added by us. Remember, you can always go over to the community section and add a custom meal over there.</p>
             <div class="food-list">
-                <h2>Official Foods</h2>
-                <p>This section contains all of the essential food items that have been added by us. Remember, you can always go over to the community section and add a custom meal over there.</p>
                 @forelse($officialFoods as $food)
                     <!-- Display Official Food Details -->
                     <div class="food-tab">
