@@ -246,4 +246,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(DietAssignment::class, 'user_id');
     }
+
+    public function foodLogs()
+    {
+        return $this->belongsToMany(Food::class)->withPivot('created_at');
+    }
 }

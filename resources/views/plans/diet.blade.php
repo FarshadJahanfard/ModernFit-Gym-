@@ -2,8 +2,6 @@
 
 @extends('layouts.app')
 
-{{--@include('diet_assignments.functions')--}}
-
 @section('content')
     <div class="container mt-4">
         <h2>Diet Plan: {{ $dietPlan->name }}</h2>
@@ -29,12 +27,30 @@
                         @foreach($assignments as $assignment)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex">
+                                    @php
+                                        $user = $assignment->user;
+                                        $logs = $user->foodLogs;
+                                        $todayLogs = $logs->filter(function ($log) {
+                                            return $log->pivot->created_at->isToday();
+                                        });
+                                    @endphp
                                     <a href="{{ route('diet_assignments.progress', ['assignmentId' => $assignment->id]) }}">
                                         {{ $assignment->user->name }}
                                     </a>
-{{--                                    <div style="width:300px;">--}}
-{{--                                        @include('partials.progress-bar', ['assignment' => $assignment])--}}
-{{--                                    </div>--}}
+                                    @include('assignments.diet.functions')
+                                    @php
+                                        $amount = $assignment->plan->calories;
+                                        $percentage = calculateCaloriesProgress($todayLogs, $amount);
+                                        $progressBarWidth = min(100, max(0, $percentage)); // Ensure progress is within valid range (0 to 100)
+                                        $isRed = $percentage > 100;
+                                    @endphp
+
+                                    <div style="width:300px;">
+                                        <div class="progress ml-3 mt-1">
+                                            <div class="progress-bar @if($isRed) bg-danger @endif" role="progressbar" style="width: {{ $progressBarWidth }}%;" aria-valuenow="{{ $progressBarWidth }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <span class="badge badge-primary badge-pill ml-3">{{ floor($percentage) }}%</span>
                                 </div>
                                 <div class="float-right">
                                     <button class="btn btn-info btn-sm" onclick="location.href='{{ route('diet_assignments.progress', ['assignmentId' => $assignment->id]) }}'">View Progress</button>

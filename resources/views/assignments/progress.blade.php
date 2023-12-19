@@ -32,7 +32,7 @@
                 @endrole
 
                 <h3>Workout Exercises</h3>
-                <table class="table table-bordered">
+                <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>Exercise Name</th>
@@ -114,7 +114,7 @@
                     </div>
                 </form>
 
-                <table class="table table-bordered">
+                <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>Exercise Name</th>

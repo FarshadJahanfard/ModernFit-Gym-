@@ -59,7 +59,8 @@ class WorkoutAssignmentController extends Controller
         $user = Auth::user();
         $workoutAssignments = $user->assignedWorkouts()->with('workoutPlan')->get();
         $dietAssignments = $user->assignedDiets()->with('plan')->get();
-        return view('assignments.member', compact('workoutAssignments', 'dietAssignments'));
+        $foodLogs = $user->foodLogs;
+        return view('assignments.member', compact('workoutAssignments', 'dietAssignments', 'foodLogs'));
     }
 
     public function update(Request $request, $id)
