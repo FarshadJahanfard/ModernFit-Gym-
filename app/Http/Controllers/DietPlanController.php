@@ -17,10 +17,12 @@ class DietPlanController extends Controller
 
     public function show($id)
     {
+        $user = Auth::user();
         $dietPlan = DietPlan::findOrFail($id);
         $assignments = $dietPlan->assignments;
+        $logs = $user->foods;
 
-        return view('plans.diet', compact('dietPlan', 'assignments'));
+        return view('plans.diet', compact('dietPlan', 'assignments', 'logs'));
     }
 
     public function store(Request $request)

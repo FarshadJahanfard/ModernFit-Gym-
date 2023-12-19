@@ -20,8 +20,9 @@ class WorkoutPlanController extends Controller
         $user = Auth::user();
         $workoutPlans = $user->workoutPlans;
         $dietPlans = $user->dietPlans;
+        $foodLogs = $user->foods;
 
-        return view('plans.index', compact('workoutPlans', 'dietPlans'));
+        return view('plans.index', compact('workoutPlans', 'dietPlans', 'foodLogs'));
     }
 
     public function show($id)
