@@ -77,6 +77,6 @@ class ClassesController extends Controller
         // Save the food item to the database
         $class->save();
 
-        return "Data stored successfully!";
+        return redirect()->route('classes')->with('success', 'Class has successfully been created.');
     }
 }
