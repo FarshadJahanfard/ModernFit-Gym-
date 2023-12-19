@@ -27,13 +27,20 @@
                         @foreach($assignments as $assignment)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex">
+                                    @php
+                                        $user = $assignment->user;
+                                        $logs = $user->foodLogs;
+                                        $todayLogs = $logs->filter(function ($log) {
+                                            return $log->pivot->created_at->isToday();
+                                        });
+                                    @endphp
                                     <a href="{{ route('diet_assignments.progress', ['assignmentId' => $assignment->id]) }}">
                                         {{ $assignment->user->name }}
                                     </a>
                                     @include('assignments.diet.functions')
                                     @php
                                         $amount = $assignment->plan->calories;
-                                        $percentage = calculateCaloriesProgress($logs, $amount);
+                                        $percentage = calculateCaloriesProgress($todayLogs, $amount);
                                         $progressBarWidth = min(100, max(0, $percentage)); // Ensure progress is within valid range (0 to 100)
                                         $isRed = $percentage > 100;
                                     @endphp
