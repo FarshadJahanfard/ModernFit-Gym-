@@ -14,11 +14,11 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="name">Name:</label>
+                <label class = "required" for="name">Name:</label>
                 <input type="text" name="name" class="form-control" value="{{ $branch->name }}" required>
             </div>
             <div class="form-group">
-                <label for="location">Location:</label>
+                <label class = "required" for="location">Location:</label>
                 <input type="text" name="location" class="form-control" value="{{ $branch->location }}" required>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>

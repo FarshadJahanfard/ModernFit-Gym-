@@ -2,6 +2,23 @@
 
 @section('content')
 
+<style>
+
+.class-group{
+    background: white;
+    margin: 2rem;
+    padding: 1rem;
+    border-radius: 16px;
+    height: 720px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.class-list{
+    height: 90%;
+}
+
+</style>
+
 <div class="classes-container">
     <div class="class-group">
         <h2 class="classes-title">Available Classes</h2>
