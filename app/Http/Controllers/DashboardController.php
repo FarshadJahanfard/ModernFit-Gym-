@@ -18,11 +18,14 @@ class DashboardController extends Controller
         $classes = $user->classes()->get();
         $meals = $user->foods()->whereDate('food_user.created_at', $selectedDate)->get();
         $totalCalories = $meals->sum('calories');
-    
-        return view('dashboard.index', compact('meals', 'totalCalories', 'classes'));
+        $workoutAssignments = $user->assignedWorkouts;
+        $dietAssignments = $user->assignedDiets;
+        $foodLogs = $user->foodLogs;
+
+        return view('dashboard.index', compact('meals', 'totalCalories', 'classes', 'dietAssignments', 'workoutAssignments', 'foodLogs'));
     }
-    
-    
+
+
 
     public function detachFoods()
     {

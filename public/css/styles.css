@@ -99,7 +99,7 @@
     /* display: flex; */
     /* overflow-x: scroll; */
     display: flex;
-    
+
 }
 
 .dashboard-section {
@@ -725,7 +725,7 @@ input {
 /* footer lcons hover */
 
 #icon-color:hover {
-    color:  #34E951;   
+    color:  #34E951;
 }
 
 #icon-color{
@@ -736,15 +736,7 @@ input {
 /* nav hover */
 
 nav ul li a {
-    transition: background-color 0.3s ease, color 0.3s ease; 
-}
-
-.navbar-light{
-    color: red;
-}
-a.navbar-brand{
-    color: red;
-    
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .card-header{
@@ -752,14 +744,9 @@ a.navbar-brand{
     text-transform: capitalize;
 }
 
-#day-btn{
-    font-size: 16px;
+.text-white-hover-green {
+    color: white;
 }
-#day-btn:hover{
-    background-color: red;
+.text-white-hover-green:hover {
+    color:  #34E951;
 }
-
-.btn-primary:hover {
-    background-color: red; 
-}
-    
