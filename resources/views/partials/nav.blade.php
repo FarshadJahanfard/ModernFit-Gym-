@@ -51,6 +51,12 @@
                             <a class="dropdown-item {{ Request::is('routes') ? 'active' : null }}" href="{{ url('/routes') }}">
                                 {!! trans('titles.adminRoutes') !!}
                             </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('classes/form') ? 'active' : null }}" href="{{ url('/classes/form') }}">
+                                Create Class
+                            </a>
+
+
                             {{--
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('active-users') ? 'active' : null }}" href="{{ url('/active-users') }}">
