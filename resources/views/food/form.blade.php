@@ -9,7 +9,7 @@
         @csrf
     
         <div class="food-form-section">
-            <label for="name">Food Name:</label>
+            <label class = "required" for="name">Food Name:</label>
             <input type="text" id="name" name="name" required><br>
         </div>
     
@@ -17,12 +17,12 @@
         <input type="number" id="quantity" name="quantity" required><br> --}}
 
         <div class="food-form-section">
-            <label for="calories">Calories:</label>
+            <label class = "required" for="calories">Calories:</label>
             <input type="number" min="1" value="100" id="calories" name="calories" required><br>
         </div>
 
         <div class="food-form-section">
-            <label for="description">Description:</label>
+            <label class = "required" for="description">Description:</label>
             <textarea id="description" name="description" required></textarea><br>
         </div>
 
