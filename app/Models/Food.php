@@ -9,7 +9,6 @@ class Food extends Model
 {
     use HasFactory;
 
-    // protected $fillable = ['name', 'calories', 'description', 'vegetarian', 'official'];
     protected $fillable = ['name', 'calories', 'protein', 'fat', 'carbohydrates', 'description', 'vegetarian', 'official', 'likes', 'dislikes'];
     protected $table = 'foods';
 
@@ -22,8 +21,10 @@ class Food extends Model
     {
         return json_encode([
             'name' => $this->name,
-            // 'quantity' => $this->quantity,
             'calories' => $this->calories,
+            'protein' => $this->protein,
+            'fat' => $this->fat,
+            'carbohydrates' => $this->carbohydrates,
             'description' => $this->description,
             'vegetarian' => $this->vegetarian,
         ]);
@@ -41,8 +42,10 @@ class Food extends Model
 
         return new self([
             'name' => $data['name'],
-            // 'quantity' => $data['quantity'],
             'calories' => $data['calories'],
+            'protein' => $data['protein'],
+            'fat' => $data['fat'],
+            'carbohydrates' => $data['carbohydrates'],
             'description' => $data['description'],
             'vegetarian' => $data['vegetarian'],
         ]);

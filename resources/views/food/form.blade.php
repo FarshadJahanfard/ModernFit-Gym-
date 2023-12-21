@@ -12,13 +12,25 @@
             <label class = "required" for="name">Food Name:</label>
             <input type="text" id="name" name="name" required><br>
         </div>
-    
-        {{-- <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" required><br> --}}
 
         <div class="food-form-section">
             <label class = "required" for="calories">Calories:</label>
-            <input type="number" min="1" value="100" id="calories" name="calories" required><br>
+            <input type="number" min="1" value="0" id="calories" name="calories" required><br>
+        </div>
+
+        <div class="food-form-section">
+            <label class = "required" for="protein">Protein (grams):</label>
+            <input type="number" min="0" value="0" id="protein" name="protein" required><br>
+        </div>
+
+        <div class="food-form-section">
+            <label class = "required" for="carbohydrates">Carbohydrates (grams):</label>
+            <input type="number" min="0" value="0" id="carbohydrates" name="carbohydrates" required><br>
+        </div>
+
+                <div class="food-form-section">
+            <label class = "required" for="fat">Fats (grams):</label>
+            <input type="number" min="0" value="0" id="fat" name="fat" required><br>
         </div>
 
         <div class="food-form-section">
@@ -30,9 +42,6 @@
             <label for="vegetarian_option">Vegetarian Option:</label>
             <input type="checkbox" id="vegetarian_option" name="vegetarian_option"><br>
         </div>
-    
-        {{-- <label for="official_option">Official Option:</label>
-        <input type="checkbox" id="official_option" name="official_option"><br> --}}
     
         <input type="submit" value="Submit">
     </form>
