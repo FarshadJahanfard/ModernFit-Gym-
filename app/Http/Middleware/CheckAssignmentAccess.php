@@ -15,6 +15,7 @@ class CheckAssignmentAccess
         // Determine the type of assignment based on the URL segment
         $assignmentType = $request->segment(1); // Assumes the assignment type is the first segment
 
+
         // Use dynamic properties to access fields based on the assignment type
         switch ($assignmentType) {
             case 'workout':

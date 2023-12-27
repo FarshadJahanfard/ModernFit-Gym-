@@ -54,7 +54,7 @@ Route::post('/dislike-food/{id}', [NutritionController::class, 'dislikeFood'])->
 Route::middleware(['auth'])->group(function () {
     Route::get('/nutrition', [NutritionController::class, 'show'])->name('nutrition.show');
     Route::post('/nutrition/add/{id}', [NutritionController::class, 'addFood'])->name('addFood');
-    
+
 });
 
 // // Still trying to get food creation to work
@@ -254,7 +254,7 @@ Route::group(['middleware' => ['auth', 'activated', 'role:trainer']], function (
 
 Route::group(['middleware' => ['auth', 'activated', 'assignmentAccess']], function () {
     Route::get('/workout/{assignmentId}', [WorkoutAssignmentController::class, 'progress'])->name('workout_assignments.progress');
-    Route::post('/store-workout-log/{assignmentId}', [WorkoutLogController::class, 'store'])->name('workout_logs.store');
+    Route::post('/workout/store-log/{assignmentId}', [WorkoutLogController::class, 'store'])->name('workout_logs.store');
 
     Route::get('/diet/{assignmentId}', [DietAssignmentController::class, 'progress'])->name('diet_assignments.progress');
 });
