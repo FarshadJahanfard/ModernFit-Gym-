@@ -37,7 +37,19 @@
                                     <a href="{{ route('diet_assignments.progress', ['assignmentId' => $assignment->id]) }}">
                                         {{ $assignment->user->name }}
                                     </a>
-                                    @include('assignments.diet.functions')
+                                    @php
+                                        function calculateCalories($logs)
+                                        {
+                                            return $logs->sum('calories');
+                                        }
+                                        function calculateCaloriesProgress($logs, $amount)
+                                        {
+                                            $totalAmount = calculateCalories($logs);
+                                            $progressPercentage = ($totalAmount / $amount) * 100;
+
+                                            return $progressPercentage;
+                                        }
+                                    @endphp
                                     @php
                                         $amount = $assignment->plan->calories;
                                         $percentage = calculateCaloriesProgress($todayLogs, $amount);

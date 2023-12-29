@@ -136,7 +136,6 @@
                                         <li class="list-group-item">
                                             <h5 class="mb-2">{{ $assignment->plan->name }}</h5>
                                             <div class="d-flex justify-content-between align-items-center">
-                                                @include('assignments.diet.functions')
                                                 @php
                                                     $todayLogs = $foodLogs->filter(function ($log) {
                                                         return $log->pivot->created_at->isToday();
@@ -144,7 +143,8 @@
                                                 @endphp
                                                 @php
                                                     $amount = $assignment->plan->calories;
-                                                    $percentage = calculateCaloriesProgress($todayLogs, $amount);
+                                                    $totalAmount = $todayLogs->sum('calories');
+                                                    $percentage = ($totalAmount / $amount) * 100;
                                                     $progressBarWidth = min(100, max(0, $percentage)); // Ensure progress is within valid range (0 to 100)
                                                     $isRed = $percentage > 100;
                                                 @endphp
