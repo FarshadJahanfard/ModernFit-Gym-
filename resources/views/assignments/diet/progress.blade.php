@@ -20,11 +20,13 @@
                 @php
                     // Adjust this logic to use the filtered logs based on the selected date
                     $logsForNutrition = $logs->filter(function ($log) {
-                        return $log->pivot->created_at->format('Y-m-d') == request('filterDate');
+                        $date = request('filterDate') ?? date("Y-m-d");
+                        return $log->pivot->created_at->format('Y-m-d') == $date;
                     });
 
                     $todayLogs = $logsForNutrition->filter(function ($log) {
-                        return $log->pivot->created_at->isToday();
+                        $date = request('filterDate') ?? date("Y-m-d");
+                        return $log->pivot->created_at->format('Y-m-d') == $date;
                     });
                 @endphp
 
